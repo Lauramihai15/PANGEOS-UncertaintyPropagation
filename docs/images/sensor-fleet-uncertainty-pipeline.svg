@@ -1,0 +1,286 @@
+<svg viewBox="0 0 1600 1200" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="1600" height="1200" fill="#ffffff"/>
+<defs>
+  <marker id="arrowhead" markerWidth="9" markerHeight="9" refX="6" refY="4" orient="auto">
+    <path d="M0,0 L8,4 L0,8 Z" fill="#94a3b8"/>
+  </marker>
+  <marker id="arrowhead-dark" markerWidth="9" markerHeight="9" refX="6" refY="4" orient="auto">
+    <path d="M0,0 L8,4 L0,8 Z" fill="#334155"/>
+  </marker>
+</defs>
+<text x="800.0" y="36" font-size="21" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="800.0" dy="0">Uncertainty propagation: from calibration to vegetation indices, across five optical sensors</tspan>
+</text>
+<text x="800.0" y="58" font-size="13.5" font-weight="400" fill="#475569" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="800.0" dy="0">Norway field campaign — wheat plots, sub-optimal (variable-cloud) illumination. Each column: one physical instrument.</tspan>
+</text>
+<rect x="32" y="82" width="288" height="60" rx="10" fill="#e6f4f2" stroke="#0f766e" stroke-width="1.5"/>
+<text x="176.0" y="106" font-size="15.5" font-weight="700" fill="#0f766e" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="176.0" dy="0">Piccolo Doppio · FLMS</tspan>
+</text>
+<text x="176.0" y="128" font-size="11.5" font-weight="400" fill="#334155" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="176.0" dy="0">400–1000 nm · 25° FOV</tspan>
+</text>
+<line x1="176.0" y1="146" x2="176.0" y2="196" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<rect x="32" y="200" width="288" height="140" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="176.0" y="216" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="176.0" dy="0">RAW SIGNAL</tspan>
+</text>
+<text x="176.0" y="234" font-size="12.3" font-weight="400" fill="#1e293b" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="176.0" dy="0">Raw DN: radiance (L) &amp;</tspan>
+<tspan x="176.0" dy="15.5">irradiance (E)</tspan>
+<tspan x="176.0" dy="15.5">5 reps + 2 dark reads/point</tspan>
+</text>
+<line x1="176.0" y1="344" x2="176.0" y2="356" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<rect x="32" y="360" width="288" height="150" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="176.0" y="376" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="176.0" dy="0">CALIBRATION</tspan>
+</text>
+<text x="176.0" y="394" font-size="12.3" font-weight="400" fill="#1e293b" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="176.0" dy="0">Lab cal → ValGEOS →</tspan>
+<tspan x="176.0" dy="15.5">field cal (3-stage chain)</tspan>
+<tspan x="176.0" dy="15.5">+ cosine u(cₒₒₛ) ≈ 9.94–10.11%</tspan>
+</text>
+<line x1="176.0" y1="514" x2="176.0" y2="521" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<rect x="32" y="525" width="288" height="150" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="176.0" y="541" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="176.0" dy="0">REFLECTANCE</tspan>
+</text>
+<text x="176.0" y="559" font-size="12.3" font-weight="400" fill="#1e293b" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="176.0" dy="0">R = π·L / E</tspan>
+<tspan x="176.0" dy="15.5">u_c peaks ≈ 11% (NIR)</tspan>
+<tspan x="176.0" dy="15.5">u_r ≈ 1.5% (sensor noise)</tspan>
+</text>
+<line x1="176.0" y1="679" x2="176.0" y2="691" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<rect x="32" y="695" width="288" height="90" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="176.0" y="711" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="176.0" dy="0">VEGETATION INDICES</tspan>
+</text>
+<text x="176.0" y="729" font-size="12.3" font-weight="400" fill="#1e293b" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="176.0" dy="0">NDVI · EVI · OSAVI</tspan>
+<tspan x="176.0" dy="15.5">MTCI · PRI</tspan>
+</text>
+<line x1="176.0" y1="789" x2="176.0" y2="850" stroke="#0f766e" stroke-width="2.5" marker-end="url(#arrowhead-dark)"/>
+<rect x="338" y="82" width="288" height="60" rx="10" fill="#e8eefd" stroke="#1d4ed8" stroke-width="1.5"/>
+<text x="482.0" y="106" font-size="15.5" font-weight="700" fill="#1d4ed8" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="482.0" dy="0">ASD FieldSpec 4</tspan>
+</text>
+<text x="482.0" y="128" font-size="11.5" font-weight="400" fill="#334155" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="482.0" dy="0">350–2500 nm · 18° FOV</tspan>
+</text>
+<line x1="482.0" y1="146" x2="482.0" y2="196" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<rect x="338" y="200" width="288" height="140" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="482.0" y="216" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="482.0" dy="0">RAW SIGNAL</tspan>
+</text>
+<text x="482.0" y="234" font-size="12.3" font-weight="400" fill="#1e293b" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="482.0" dy="0">Raw DN: target +</tspan>
+<tspan x="482.0" dy="15.5">white reference panel (WP)</tspan>
+<tspan x="482.0" dy="15.5">10 scans averaged/reading</tspan>
+</text>
+<line x1="482.0" y1="344" x2="482.0" y2="356" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<rect x="338" y="360" width="288" height="150" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="482.0" y="376" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="482.0" dy="0">CALIBRATION</tspan>
+</text>
+<text x="482.0" y="394" font-size="12.3" font-weight="400" fill="#1e293b" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="482.0" dy="0">WP-ratio method (Eq. 2)</tspan>
+<tspan x="482.0" dy="15.5">WP interpolated to</tspan>
+<tspan x="482.0" dy="15.5">target acquisition time</tspan>
+</text>
+<line x1="482.0" y1="514" x2="482.0" y2="521" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<rect x="338" y="525" width="288" height="150" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="482.0" y="541" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="482.0" dy="0">REFLECTANCE</tspan>
+</text>
+<text x="482.0" y="559" font-size="12.3" font-weight="400" fill="#1e293b" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="482.0" dy="0">R = (DN_T/DN_R)·ρ_R·c_clouds</tspan>
+<tspan x="482.0" dy="15.5">u(c_clouds) ≈ 3.6% NIR / 2.5% SWIR</tspan>
+<tspan x="482.0" dy="15.5">u(c_inhom.) ≈ 8.5%</tspan>
+</text>
+<line x1="482.0" y1="679" x2="482.0" y2="691" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<rect x="338" y="695" width="288" height="90" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="482.0" y="711" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="482.0" dy="0">VEGETATION INDICES</tspan>
+</text>
+<text x="482.0" y="729" font-size="12.3" font-weight="400" fill="#1e293b" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="482.0" dy="0">NDVI · EVI · OSAVI</tspan>
+<tspan x="482.0" dy="15.5">MTCI · PRI</tspan>
+</text>
+<line x1="482.0" y1="789" x2="482.0" y2="850" stroke="#1d4ed8" stroke-width="2.5" marker-end="url(#arrowhead-dark)"/>
+<rect x="644" y="82" width="288" height="60" rx="10" fill="#f3e9fb" stroke="#7e22ce" stroke-width="1.5"/>
+<text x="788.0" y="106" font-size="15.5" font-weight="700" fill="#7e22ce" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="788.0" dy="0">SVC HR-1024i</tspan>
+</text>
+<text x="788.0" y="128" font-size="11.5" font-weight="400" fill="#334155" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="788.0" dy="0">350–2500 nm · 14° FOV</tspan>
+</text>
+<line x1="788.0" y1="146" x2="788.0" y2="196" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<rect x="644" y="200" width="288" height="140" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="788.0" y="216" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="788.0" dy="0">RAW SIGNAL</tspan>
+</text>
+<text x="788.0" y="234" font-size="12.3" font-weight="400" fill="#1e293b" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="788.0" dy="0">Raw DN: target +</tspan>
+<tspan x="788.0" dy="15.5">white reference panel (WP)</tspan>
+<tspan x="788.0" dy="15.5">10 scans averaged/reading</tspan>
+</text>
+<line x1="788.0" y1="344" x2="788.0" y2="356" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<rect x="644" y="360" width="288" height="150" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="788.0" y="376" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="788.0" dy="0">CALIBRATION</tspan>
+</text>
+<text x="788.0" y="394" font-size="12.3" font-weight="400" fill="#1e293b" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="788.0" dy="0">Same WP-ratio protocol</tspan>
+<tspan x="788.0" dy="15.5">as ASD (Eq. 2)</tspan>
+</text>
+<line x1="788.0" y1="514" x2="788.0" y2="521" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<rect x="644" y="525" width="288" height="150" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="788.0" y="541" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="788.0" dy="0">REFLECTANCE</tspan>
+</text>
+<text x="788.0" y="559" font-size="12.3" font-weight="400" fill="#1e293b" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="788.0" dy="0">R = (DN_T/DN_R)·ρ_R·c_clouds</tspan>
+<tspan x="788.0" dy="15.5">narrowest FOV → least</tspan>
+<tspan x="788.0" dy="15.5">plot-area averaging</tspan>
+</text>
+<line x1="788.0" y1="679" x2="788.0" y2="691" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<rect x="644" y="695" width="288" height="90" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="788.0" y="711" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="788.0" dy="0">VEGETATION INDICES</tspan>
+</text>
+<text x="788.0" y="729" font-size="12.3" font-weight="400" fill="#1e293b" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="788.0" dy="0">NDVI · EVI · OSAVI</tspan>
+<tspan x="788.0" dy="15.5">MTCI · PRI</tspan>
+</text>
+<line x1="788.0" y1="789" x2="788.0" y2="850" stroke="#7e22ce" stroke-width="2.5" marker-end="url(#arrowhead-dark)"/>
+<rect x="950" y="82" width="288" height="60" rx="10" fill="#fdeee4" stroke="#c2410c" stroke-width="1.5"/>
+<text x="1094.0" y="106" font-size="15.5" font-weight="700" fill="#c2410c" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1094.0" dy="0">Altum (UAV)</tspan>
+</text>
+<text x="1094.0" y="128" font-size="11.5" font-weight="400" fill="#334155" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1094.0" dy="0">5 bands + thermal · 30 m AGL</tspan>
+</text>
+<line x1="1094.0" y1="146" x2="1094.0" y2="196" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<rect x="950" y="200" width="288" height="140" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="1094.0" y="216" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1094.0" dy="0">RAW SIGNAL</tspan>
+</text>
+<text x="1094.0" y="234" font-size="12.3" font-weight="400" fill="#1e293b" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1094.0" dy="0">Per-band DN,</tspan>
+<tspan x="1094.0" dy="15.5">orthomosaic (Pix4D)</tspan>
+</text>
+<line x1="1094.0" y1="344" x2="1094.0" y2="356" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<rect x="950" y="360" width="288" height="150" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="1094.0" y="376" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1094.0" dy="0">CALIBRATION</tspan>
+</text>
+<text x="1094.0" y="394" font-size="12.3" font-weight="400" fill="#1e293b" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1094.0" dy="0">Grey panel (MicaSense)</tspan>
+<tspan x="1094.0" dy="15.5">vs. manual WP2 — compared</tspan>
+</text>
+<line x1="1094.0" y1="514" x2="1094.0" y2="521" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<rect x="950" y="525" width="288" height="150" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="1094.0" y="541" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1094.0" dy="0">REFLECTANCE</tspan>
+</text>
+<text x="1094.0" y="559" font-size="12.3" font-weight="400" fill="#1e293b" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1094.0" dy="0">R per band, per plot ROI</tspan>
+<tspan x="1094.0" dy="15.5">u_c ≈ 0.33–0.47%</tspan>
+<tspan x="1094.0" dy="15.5">(favourable, stable-sky flight)</tspan>
+</text>
+<line x1="1094.0" y1="679" x2="1094.0" y2="691" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<rect x="950" y="695" width="288" height="90" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="1094.0" y="711" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1094.0" dy="0">VEGETATION INDICES</tspan>
+</text>
+<text x="1094.0" y="729" font-size="12.3" font-weight="400" fill="#1e293b" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1094.0" dy="0">NDVI · OSAVI · EVI</tspan>
+<tspan x="1094.0" dy="15.5">(no PRI — band unavailable)</tspan>
+</text>
+<line x1="1094.0" y1="789" x2="1094.0" y2="850" stroke="#c2410c" stroke-width="2.5" marker-end="url(#arrowhead-dark)"/>
+<rect x="1256" y="82" width="288" height="60" rx="10" fill="#e8f5ea" stroke="#15803d" stroke-width="1.5"/>
+<text x="1400.0" y="106" font-size="15.5" font-weight="700" fill="#15803d" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1400.0" dy="0">REMX Dual (UAV)</tspan>
+</text>
+<text x="1400.0" y="128" font-size="11.5" font-weight="400" fill="#334155" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1400.0" dy="0">10 bands · 30 m AGL</tspan>
+</text>
+<line x1="1400.0" y1="146" x2="1400.0" y2="196" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<rect x="1256" y="200" width="288" height="140" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="1400.0" y="216" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1400.0" dy="0">RAW SIGNAL</tspan>
+</text>
+<text x="1400.0" y="234" font-size="12.3" font-weight="400" fill="#1e293b" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1400.0" dy="0">Per-band DN,</tspan>
+<tspan x="1400.0" dy="15.5">orthomosaic (Pix4D)</tspan>
+</text>
+<line x1="1400.0" y1="344" x2="1400.0" y2="356" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<rect x="1256" y="360" width="288" height="150" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="1400.0" y="376" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1400.0" dy="0">CALIBRATION</tspan>
+</text>
+<text x="1400.0" y="394" font-size="12.3" font-weight="400" fill="#1e293b" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1400.0" dy="0">Grey panel (MicaSense)</tspan>
+<tspan x="1400.0" dy="15.5">vs. manual WP2 — compared</tspan>
+</text>
+<line x1="1400.0" y1="514" x2="1400.0" y2="521" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<rect x="1256" y="525" width="288" height="150" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="1400.0" y="541" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1400.0" dy="0">REFLECTANCE</tspan>
+</text>
+<text x="1400.0" y="559" font-size="12.3" font-weight="400" fill="#1e293b" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1400.0" dy="0">R per band, per plot ROI</tspan>
+<tspan x="1400.0" dy="15.5">u_c ≈ 0.19–0.62%</tspan>
+<tspan x="1400.0" dy="15.5">(favourable, stable-sky flight)</tspan>
+</text>
+<line x1="1400.0" y1="679" x2="1400.0" y2="691" stroke="#94a3b8" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+<rect x="1256" y="695" width="288" height="90" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="1400.0" y="711" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1400.0" dy="0">VEGETATION INDICES</tspan>
+</text>
+<text x="1400.0" y="729" font-size="12.3" font-weight="400" fill="#1e293b" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1400.0" dy="0">NDVI · OSAVI · EVI · PRI</tspan>
+<tspan x="1400.0" dy="15.5">(no MTCI — band unavailable)</tspan>
+</text>
+<line x1="1400.0" y1="789" x2="1400.0" y2="850" stroke="#15803d" stroke-width="2.5" marker-end="url(#arrowhead-dark)"/>
+<rect x="28" y="152" width="1544" height="30" rx="6" fill="#fff7ed" stroke="#f59e0b" stroke-width="1"/>
+<text x="800.0" y="171" font-size="11" font-weight="600" fill="#92400e" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="800.0" dy="0">⚠ Each instrument below follows its own independent calibration / traceability route to SI — the routes are NOT shared or interchangeable. Only the final reflectance and index values are compared, at the bottom of this diagram.</tspan>
+</text>
+<rect x="32" y="860" width="1536" height="300" rx="14" fill="#f1f5f9" stroke="#334155" stroke-width="1.5"/>
+<text x="800.0" y="894" font-size="16.5" font-weight="700" fill="#0f172a" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="800.0" dy="0">Cross-sensor intercomparison  —  reference standard: Piccolo Doppio FLMS</tspan>
+</text>
+<text x="800.0" y="924" font-size="16" font-weight="600" fill="#0f172a" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="800.0" dy="0">Eₙ  =  |x₁ − x₂|  /  ( k · √( u(x₁)² + u(x₂)² ) )</tspan>
+</text>
+<text x="800.0" y="952" font-size="12.8" font-weight="400" fill="#334155" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="800.0" dy="0">Eₙ ≤ 1  →  agreement within combined uncertainty  (k=1 ≈ 68% confidence, k=2 ≈ 95%)</tspan>
+</text>
+<text x="800.0" y="978" font-size="12.8" font-weight="400" fill="#334155" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="800.0" dy="0">Eₙ &gt; 1  →  disagreement exceeds what known uncertainty can explain — real bias or missing uncertainty source</tspan>
+</text>
+<text x="72" y="1020" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="start" font-family="Helvetica, Arial, sans-serif">
+<tspan x="72" dy="0">Also computed, sensor-vs-Piccolo, across the full spectrum:</tspan>
+</text>
+<text x="72" y="1042" font-size="12.5" font-weight="400" fill="#1e293b" text-anchor="start" font-family="Helvetica, Arial, sans-serif">
+<tspan x="72" dy="0">Pearson r  ·  regression slope α  ·  intercept (bias)  ·  RMSE</tspan>
+</text>
+<text x="72" y="1068" font-size="12" font-weight="400" fill="#475569" text-anchor="start" font-family="Helvetica, Arial, sans-serif">
+<tspan x="72" dy="0">— deviation from the 1:1 identity line quantifies systematic offset between instruments</tspan>
+</text>
+<text x="1528" y="1020" font-size="12.5" font-weight="700" fill="#b45309" text-anchor="end" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1528" dy="0">Validity constraint on every comparison above:</tspan>
+</text>
+<text x="1528" y="1042" font-size="12.5" font-weight="400" fill="#1e293b" text-anchor="end" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1528" dy="0">acquisitions must be within ≈ 10 minutes of each other</tspan>
+</text>
+<text x="1528" y="1064" font-size="12" font-weight="400" fill="#475569" text-anchor="end" font-family="Helvetica, Arial, sans-serif">
+<tspan x="1528" dy="0">under variable sky — beyond that, irradiance drift alone can</tspan>
+<tspan x="1528" dy="15">reach ≈30–34% (90th percentile), swamping any real signal</tspan>
+</text>
+<text x="800.0" y="1144" font-size="10.5" font-weight="400" fill="#64748b" text-anchor="middle" font-family="Helvetica, Arial, sans-serif">
+<tspan x="800.0" dy="0">u_r = random uncertainty  ·  u_s = systematic uncertainty  ·  u_c = combined standard uncertainty  ·  k = coverage factor</tspan>
+</text>
+</svg>
