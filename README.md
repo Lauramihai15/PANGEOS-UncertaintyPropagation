@@ -14,8 +14,7 @@ Four cases, each with documentation and runnable notebooks:
 
 **Reference:** Werfeli, M., Antala, M., Abdelmajeed, A.Y.A., Sánchez-Virosta,
 Á., Halem, Z., Merrington, A., El-Mejjaouy, Y., Petrovic, B., Hueni, A.,
-Bouras, E.H., Kefauver, S.C., Shafiee, S., Rastogi, A., Mihai, L. (in
-review). *Uncertainty propagation and intercomparison of multi-sensor
+Bouras, E.H., Kefauver, S.C., Shafiee, S., Rastogi, A., Mihai, L. *Uncertainty propagation and intercomparison of multi-sensor
 measurements of vegetation stress in sub-optimal conditions.*
 
 ## Building the site locally
