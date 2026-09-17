@@ -1,128 +1,80 @@
-# Case: ASD FieldSpec 4 & SVC HR-1024i
+# Case: Uncertainty propagation for ASD FieldSpec 4 & SVC HR-1024i
 
-This case extends the reflectance-uncertainty approach introduced in
-[Case 2](https://github.com/pangeos-cost/uq-training/blob/main/notebooks/case_2-Ex1-VI.ipynb)
-to the two white-reference-panel ground spectroradiometers used in the 2025
-Norway field campaign: the **ASD FieldSpec 4** and the **SVC HR-1024i**. Both
-instruments follow the *same calibration method* — this is what makes them a
-natural pair to study together — but remain two independent instruments with
-their own uncertainty budgets, measured under the same sub-optimal,
-variable-cloud illumination as every other case in this section.
+The previous training material, [Case 2](https://github.com/pangeos-cost/uq-training/blob/main/notebooks/case_2-Ex1-VI.ipynb), presented a basic case of uncertainty propagation for reflectance factor measurements, using ASD data as an example.
 
-!!! note "Status"
-    This describes the method as it exists in the underlying research code,
-    not yet published in this repository in adapted form. As with
-    [Piccolo](case-piccolo.md#why-a-calibration-chain-is-needed-at-all), the
-    calibration methodology itself is treated as a black box here. Findings
-    referenced throughout are from Werfeli, Mihai *et al.* (in review),
-    *"Uncertainty propagation and intercomparison of multi-sensor
-    measurements of vegetation stress in sub-optimal conditions."*
+Here, is presented the extended version of **Case 2** going through the full uncertainty propagation workflow for two field spectroradiometers: the **ASD FieldSpec 4** and the **SVC HR-1024i**.
 
-!!! tip "Not just for this dataset"
-    The white-panel-ratio method shown here applies to **any field
-    spectroradiometer that derives reflectance from a target/reference-panel
-    ratio** — not only the ASD FieldSpec 4 and SVC HR-1024i used in this
-    campaign. The 2025 Norway data is a concrete worked example; the code is
-    written to run on your own repeated field measurements and your own
-    panel calibration certificate in the same way.
+For this purpose, two white reference panels were used during the field measurements:
 
-## The method: white-panel ratio, not a lab calibration chain
+* **WP2**, with a NIST traceable calibration (calibration certificate with corresponding uncertainties at k=2);
+* **WP1**, without a traceable calibration certificate.
 
-Unlike Piccolo Doppio, which is anchored through a lab calibration chain,
-ASD and SVC follow the field convention described in the campaign's
-reflectance equation: the target measurement is divided by a white reference
-panel (WP) measurement taken immediately before/after it, scaled by the
-panel's own known reflectance factor:
+The measurements were collected during the Norway 2025 field campaign, over the same plots and under the similar sub optimal and variable illumination conditions as the Piccolo Doppio and UAV measurements.
 
-$$R = \frac{DN_T}{DN_R} \cdot \rho_R \cdot c_\text{clouds}$$
+ASD and SVC followed the same field protocol, measuring the same targets and reference panels one after another. The uncertainty propagation approach is therefore similar for the two instruments, while the resulting reflectance values, vegetation indices, and propagated uncertainties are specific for each system.
 
-Two different white panels were used across the campaign (referred to here
-as WP1 and WP2), each independently characterised, each with its own
-reflectance-uncertainty file. Which panel was used is tracked throughout as
-part of the uncertainty budget, not assumed away.
+For both devices, the internal calibration and metrological traceability are treated as a **black box**, following *Werfeli, Mihai et al. (2026)*. The uncertainty budget therefore focuses on the quantities that can be evaluated from the field measurements and from the available information on the reference panels.
 
-**What this method needs, that a lab-calibrated instrument does not:** the
-panel reading has to be *interpolated in time* to match the target reading,
-since the two are never taken at the exact same instant. That interpolation
-step is itself propagated with uncertainty (via `punpy`'s Monte Carlo
-propagation) — treating the panel's timing as free/exact would understate the
-final reflectance uncertainty.
+> **Note:** The same approach can be used for other optical systems that calculate reflectance from the ratio between a target measurement and a white reference measurement. It is not specific to ASD FieldSpec 4 or SVC HR-1024i.
 
-## The cloud problem, and how it was measured
+## Measurement and uncertainty propagation approach
 
-This is the sub-optimal-conditions problem in its most direct form for this
-instrument type. If the sky is stable, a white panel reading taken a few
-minutes before the target is an excellent stand-in for the panel reading you
-*would* have taken at the exact target time. If clouds are moving, that
-assumption breaks down — and it breaks down differently at different
-wavelengths, because different parts of the spectrum are affected differently
-by changing diffuse/direct irradiance.
+Reflectance is calculated as:
 
-The campaign's answer: **estimate the cloud-driven uncertainty directly from
-the data**, using sequential white-panel pairs. For each pair of panel
-readings bracketing a plot measurement, the two readings are regressed
-against each other across three wavelength-pair combinations (covering VNIR,
-SWIR1, SWIR2), and the residuals from that regression become the cloud
-uncertainty term, `u(clouds)`, at every wavelength — the same idea shown for
-one plot pair in the paper's cloud-regression figure, applied here to
-determine an actual number rather than assumed to be zero.
+$$R = \frac{DN_T}{DN_R} \cdot \rho_R \cdot c_{\mathrm{clouds}}$$
 
-This is treated as a **systematic** uncertainty component, alongside the
-panel's own reflectance uncertainty and the instrument's plot-level
-inhomogeneity — combined via covariance matrices (not simply added) so that
-correlation between components isn't lost, then converted back into a single
-combined uncertainty and correlation structure for the reflectance spectrum.
+where:
 
-!!! tip "Try it yourself"
-    [`case_asdsvc-Ex1_FieldUncertaintyBudget.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_asdsvc-Ex1_FieldUncertaintyBudget.ipynb)
-    builds a simplified version of this budget from real ASD FieldSpec 4
-    field repeats (Plot 103): repeatability across positions, a real panel
-    calibration certificate, and a cloud-uncertainty proxy estimated from
-    real white-reference self-checks.
+* $$\(DN_T\)$$ is the raw signal measured over the target;
+* $$\(DN_R\)$$ is the raw signal measured over the white reference panel;
+* $$\(\rho_R\)$$ is the reflectance scaling factor of the reference panel;
+* $$\(c_{\mathrm{clouds}}\)$$ accounts for changes in illumination caused by variable cloud conditions.
 
-## What this produces, and how it feeds forward
+The main difference compared with the Piccolo Doppio case is that ASD and SVC do not measure target and reference simultaneously. The measurements are taken one after another, so the illumination can change between the two acquisitions.
 
-For each measurement, this case produces — per wavelength — a reflectance
-value with its random uncertainty, systematic uncertainty (cloud + panel +
-plot inhomogeneity, combined), and the correlation structure between
-wavelengths. From there, the same pattern used throughout this training
-module applies:
+To reduce this effect, the white panel signal is interpolated in time to the target acquisition time. The uncertainty introduced by this interpolation is also propagated using the Monte Carlo approach implemented in `punpy`.
 
-```
-reflectance (value, u_random, u_systematic, correlation structure)
-        │
-        ▼
-vegetation indices: NDVI, EVI, OSAVI, MTCI, PRI
-        │   (propagated with punpy, using a 2- or 3-band correlation
-        │    matrix built from the reflectance's own correlation structure
-        │    at exactly the bands each index needs)
-        ▼
-ready for cross-sensor comparison — see Case: cross-sensor intercomparison
-```
+The effect of changing cloud conditions is estimated directly from sequential white panel measurements. Panel measurements around the target acquisition are compared over wavelength ranges representative of VNIR, SWIR1, and SWIR2, and the regression residuals are used to estimate the wavelength dependent cloud uncertainty term, \(u(\mathrm{clouds})\).
 
-The vegetation indices are computed with the *same five formulas* used for
-Piccolo Doppio (Case 1/1b) — NDVI, EVI, OSAVI, MTCI, PRI — which is precisely
-what makes a later cross-instrument comparison of index values meaningful:
-the formulas are identical, only the reflectance inputs and their
-uncertainty differ.
+This contribution is combined with the uncertainty of the reference panel and the plot inhomogeneity using covariance matrices, so that correlations between uncertainty components are retained.
 
-!!! tip "Try it yourself"
-    [`case_asdsvc-Ex2_VegetationIndices.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_asdsvc-Ex2_VegetationIndices.ipynb)
-    computes all five indices from the real Plot 103 spectrum with `punpy`,
-    and checks the result against the official campaign values — all five
-    index **values** match to floating-point precision; their propagated
-    **uncertainty** matches only approximately (as with the reflectance
-    budget above), which is itself informative about how uncertainty
-    propagates differently through different index formulas.
+## Best practice tips for field campaign under sub - optimal sky conditions, when using these types of instruments:
+
+* keep the time between white panel and target measurements as short as possible;
+* measure the white panel before and after the target whenever possible;
+* record accurate timestamps;
+* keep the measurement geometry consistent;
+* avoid shading the target or the panel;
+* keep the white panel clean and in good condition;
+* use a traceably calibrated panel whenever possible;
+* repeat measurements when illumination changes quickly;
+* keep the raw data and all relevant metadata.
+
+During the Norway 2025 campaign, the white panel was remeasured before/after each plot (aprox. at **10 minutes**).
+
+TRY IT YOURSELF:
+
+[`case_asdsvc-Ex1_FieldUncertaintyBudget.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_asdsvc-Ex1_FieldUncertaintyBudget.ipynb)
+builds a simplified uncertainty budget using real ASD FieldSpec 4 measurements from Plot 103.
+
+## From reflectance to vegetation indices
+
+For each wavelength, the workflow gives a reflectance value together with its random uncertainty, systematic uncertainty, and correlation structure.
+
+These are then propagated to the same five vegetation indices used in the Piccolo Doppio case:
+
+**NDVI, EVI, OSAVI, MTCI, and PRI.**
+
+The uncertainty of each index is propagated with `punpy`, using the correlation information from the reflectance values at the wavelengths required by each index.
+
+Using the same vegetation-index formulas for all instruments makes the later cross-sensor comparison more meaningful, because the differences come from the measured reflectance and its uncertainty, not from different index definitions.
+
+TRY IT YOURSELF:
+
+[`case_asdsvc-Ex2_VegetationIndices.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_asdsvc-Ex2_VegetationIndices.ipynb)
+calculates all five vegetation indices from the real Plot 103 reflectance spectrum and propagates their uncertainties using `punpy`.
 
 ## Going further
 
-- [Case: Piccolo Doppio](case-piccolo.md) — the lab-calibrated alternative to
-  this field-panel method, for the same campaign.
-- [Case: cross-sensor intercomparison](case-intercomparison.md) — how ASD and
-  SVC results (and everyone else's) get tested against each other.
-- **Field practice note:** this method depends on the operational
-  10-minute rule — re-measure the white panel at least every 10 minutes,
-  since panel-to-target timing directly drives the cloud-uncertainty term
-  above. See [Case: cross-sensor intercomparison](case-intercomparison.md)
-  for what happens in practice when that window is exceeded.
+* [Case: Piccolo Doppio](case-piccolo.md) — simultaneous radiance and irradiance measurements with a full traceability chain.
+* [Case: cross-sensor intercomparison](case-intercomparison.md) — comparison of ASD, SVC, Piccolo Doppio, and the other optical systems using their associated uncertainties.
