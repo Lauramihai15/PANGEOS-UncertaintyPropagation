@@ -52,7 +52,7 @@ Two independent reflectance calibration methods are compared, allowing to invest
 —> [`case_uav-Ex1_AltumREMX_MethodComparison.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_uav-Ex1_AltumREMX_MethodComparison.ipynb) - compares the two calibration approaches and shows differences of approximately 15 - 28% in several spectral bands.
 —> [`case_uav-Ex2_VegetationIndices.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_uav-Ex2_VegetationIndices.ipynb) - derives vegetation indices from the calibrated UAV data. The Altum results reproduce the Norway field campaign values, while the REMX results show a small but real discrepancy that is retained and discussed rather than artificially corrected.
   
-5. **[Cross-sensor intercomparison](case-intercomparison.md)** —
+4. **[Cross-sensor intercomparison](case-intercomparison.md)** —
 This final example brings the previous measurement approaches together and asks a broader question: when measurements come from different sensors, how can we determine whether their results agree within their respective uncertainties?
 
 The case study shows which sensor comparisons were performed and how variable cloud conditions affect cross - sensor agreement. 
