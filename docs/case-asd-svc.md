@@ -21,16 +21,14 @@ For both devices, the internal calibration and metrological traceability are tre
 
 Reflectance is calculated as:
 
-$$
-R = \frac{DN_T}{DN_R} \cdot \rho_R \cdot c_{\mathrm{clouds}}
-$$
+$$R = \frac{DN_T}{DN_R} \cdot \rho_R \cdot c_{\mathrm{clouds}}$$
 
 where:
 
-* \(DN_T\) is the raw signal measured over the target;
-* \(DN_R\) is the raw signal measured over the white reference panel;
-* \(\rho_R\) is the reflectance scaling factor of the reference panel;
-* \(c_{\mathrm{clouds}}\) accounts for changes in illumination caused by variable cloud conditions.
+* $$\(DN_T\)$$ is the raw signal measured over the target;
+* $$\(DN_R\)$$ is the raw signal measured over the white reference panel;
+* $$\(\rho_R\)$$ is the reflectance scaling factor of the reference panel;
+* $$\(c_{\mathrm{clouds}}\)$$ accounts for changes in illumination caused by variable cloud conditions.
 
 The main difference compared with the Piccolo Doppio case is that ASD and SVC do not measure target and reference simultaneously. The measurements are taken one after another, so the illumination can change between the two acquisitions.
 
