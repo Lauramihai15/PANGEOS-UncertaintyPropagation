@@ -1,45 +1,43 @@
-# Case: ASD FieldSpec 4 & SVC HR-1024i
+# Case: Uncertainty propagation for ASD FieldSpec 4 & SVC HR-1024i
 
-This case extends the reflectance-uncertainty approach introduced in
-[Case 2](https://github.com/pangeos-cost/uq-training/blob/main/notebooks/case_2-Ex1-VI.ipynb)
-to the two white-reference-panel ground spectroradiometers used in the 2025
-Norway field campaign: the **ASD FieldSpec 4** and the **SVC HR-1024i**. Both
-instruments follow the *same calibration method* — this is what makes them a
-natural pair to study together — but remain two independent instruments with
-their own uncertainty budgets, measured under the same sub-optimal,
-variable-cloud illumination as every other case in this section.
+The previous training material, [Case 2](https://github.com/pangeos-cost/uq-training/blob/main/notebooks/case_2-Ex1-VI.ipynb), introduces the basic principles of uncertainty propagation for reflectance factor measurements, using data from an ASD spectroradiometer as an example.
 
-!!! note "Status"
-    This describes the method as it exists in the underlying research code,
-    not yet published in this repository in adapted form. As with
-    [Piccolo](case-piccolo.md#why-a-calibration-chain-is-needed-at-all), the
-    calibration methodology itself is treated as a black box here. Findings
-    referenced throughout are from Werfeli, Mihai *et al.* (in review),
-    *"Uncertainty propagation and intercomparison of multi-sensor
-    measurements of vegetation stress in sub-optimal conditions."*
+The present material extends **Case 2** and provides a step by step workflow for propagating uncertainty through the complete measurement and processing chain for two field spectroradiometers: the **ASD FieldSpec 4** and the **SVC HR-1024i**.
 
-!!! tip "Not just for this dataset"
-    The white-panel-ratio method shown here applies to **any field
-    spectroradiometer that derives reflectance from a target/reference-panel
-    ratio** — not only the ASD FieldSpec 4 and SVC HR-1024i used in this
-    campaign. The 2025 Norway data is a concrete worked example; the code is
-    written to run on your own repeated field measurements and your own
-    panel calibration certificate in the same way.
+Two white reference panels were used in the field:
 
-## The method: white-panel ratio, not a lab calibration chain
+* **WP2**, with a NIST-traceable calibration;
+* **WP1**, without a traceable calibration certificate.
 
-Unlike Piccolo Doppio, which is anchored through a lab calibration chain,
-ASD and SVC follow the field convention described in the campaign's
-reflectance equation: the target measurement is divided by a white reference
-panel (WP) measurement taken immediately before/after it, scaled by the
-panel's own known reflectance factor:
+The measurements were acquired during the same Norway 2025 field campaign as the Piccolo Doppio and UAV Altum and REMX measurements, over the same plots, during approximately the same period of the day, and under the same **sub-optimal and variable illumination conditions**.
 
-$$R = \frac{DN_T}{DN_R} \cdot \rho_R \cdot c_\text{clouds}$$
+The ASD and SVC systems were operated using the same measurement protocol, with the two instruments measuring the same targets and reference panels sequentially. Consequently, the two systems follow a similar uncertainty propagation methodology, while retaining their own instrument specific results: reflectance values, vegetation indices, and their corresponding propagated uncertainties.
 
-Two different white panels were used across the campaign (referred to here
-as WP1 and WP2), each independently characterised, each with its own
-reflectance-uncertainty file. Which panel was used is tracked throughout as
-part of the uncertainty budget, not assumed away.
+For these two systems, the internal calibration and metrological traceability of the spectroradiometers are treated as a **black box**, following the approach described by *Werfeli, Mihai et al. (2026)*. The uncertainty analysis therefore focuses on the quantities and sources of variability that can be evaluated from the field measurement procedure and the available calibration information.
+
+The complete methodology and the performance of the two systems are described in:
+
+*Werfeli, M., Mihai, L., et al. (2026). “Uncertainty propagation and intercomparison of multi-sensor measurements of vegetation stress in sub-optimal conditions.”*
+
+> **Note:** The methodology presented in this case, together with the associated code, is based on a **white-reference-panel ratio approach** for reflectance retrieval. It can therefore be adapted to other optical systems that derive reflectance from the ratio between measurements of a target and a reference panel. The workflow is not limited to the **ASD FieldSpec 4** and **SVC HR-1024i** instruments used during the Norway 2025 campaign.
+
+## Methodology used: Target Plot 1 / White Panel WP1 / White Panel WP2 / … / Target Plot n
+
+Compared with the **Piccolo Doppio example (Case 1)**, where a complete traceability chain is considered, the ASD and SVC workflow uses the following relationship to derive reflectance:
+
+$$
+R = \frac{DN_T}{DN_R} \cdot \rho_R \cdot c_{\mathrm{clouds}}
+$$
+
+where:
+
+* \(DN_T\) is the raw signal measured over the **target**, corresponding to the area of the plot within the spectroradiometer field of view;
+* \(DN_R\) is the raw signal measured over the **white reference panel** (WP1 or WP2);
+* \(\rho_R\) is the reflectance scaling factor of the reference panel, obtained from its calibration information;
+* \(c_{\mathrm{clouds}}\) represents the correction applied to account for changes in illumination caused by variable cloud conditions.
+
+Unlike the Piccolo Doppio configuration, where radiance and irradiance are measured simultaneously through two optical channels, ASD and SVC measurements of the target and reference panel are acquired sequentially. Consequently, changes in incoming illumination between consecutive target and reference measurements can directly influence the retrieved reflectance. The cloud related correction and its associated uncertainty therefore become important components of the uncertainty budget under sub-optimal field conditions.
+
 
 **What this method needs, that a lab-calibrated instrument does not:** the
 panel reading has to be *interpolated in time* to match the target reading,
@@ -106,7 +104,7 @@ what makes a later cross-instrument comparison of index values meaningful:
 the formulas are identical, only the reflectance inputs and their
 uncertainty differ.
 
-!!! tip "Try it yourself"
+TRY IT YOURSELF:
     [`case_asdsvc-Ex2_VegetationIndices.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_asdsvc-Ex2_VegetationIndices.ipynb)
     computes all five indices from the real Plot 103 spectrum with `punpy`,
     and checks the result against the official campaign values — all five
