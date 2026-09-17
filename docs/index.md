@@ -21,7 +21,7 @@ Note: This training material is designed to be reused with your own data.
 Every notebook in this section uses real data from the 2025 Norway campaign so that the workflow is concrete and easy to follow. However, the code has been written as a general-purpose template and can be adapted to your own measurements, provided that your input data follow the required format.
 This applies especially to the Piccolo Doppio case. The same uncertainty-propagation approach can be used for other dual-fibre spectrometer systems based on Ocean Insight QE-series detectors, using, for example, a cosine diffuser for irradiance measurements and a collimator or bare fibre for radiance measurements. This includes FLOX and similar custom dual-optic systems, not only the specific Piccolo Doppio configuration used in this campaign.
 
-<img src="images/sensor-fleet-uncertainty-pipeline.svg" alt="Diagram: uncertainty propagation from calibration to vegetation indices, for five optical sensors, converging into a cross-sensor intercomparison step using the E_N ratio" width="100%"/>
+<img src="images/sensor-fleet-full-traceability.png" alt="Diagramă completă: trasabilitate și propagare a incertitudinii pentru cele 5 sisteme optice" width="100%"/>
 
 ## Case study examples:
 
