@@ -5,21 +5,17 @@ notebooks teach the *concepts* of uncertainty propagation for the Piccolo Doppio
 
 This page focuses on what each stage produces and how uncertainty flows to the next. The complete implementation, including the calibration chain itself, is available as a runnable notebook below, for readers who want to reproduce every step on their own data.
 
-!!! note ## This example be applied to any similar device
-
-
-    The Piccolo Doppio system is one example of a broader instrument class: 
+> **Note:** This example be applied to any similar device
+     The Piccolo Doppio system is one example of a broader instrument class: 
     a **dual fibre spectrometer built around Ocean Insight QE series spectrometers**, 
     with a cosine diffuser fore optic for irradiance and a collimator (or bare fibre) for radiance. 
     The same measurement equation, calibration chain structure, and uncertainty propagation approach
     can be applied directly to other systems built the same way, such as **FLOX** and similar custom dual
     optic QE setups.
-
     The 2025 Norway data is used throughout as a concrete worked example so the process is easy to follow;
     every step is written to be re-run on your own data by substituting your own files in the same format.
     
 ## Calibration chain
-
 A spectrometer's raw output is not a physical quantity, it is a digital count/number (DN) that depends on the specific detector, its exposure time, its temperature, and how it has drifted since it was last checked against a known reference (a standard). Before anything scientifically meaningful (radiance, irradiance, reflectance) can be computed, the DNs has to be traced back to a physical unit through an unbroken chain of comparisons against reference standards, this is what *traceability* means.
 
 In this pipeline, that traceability chain has three links, each one re linking the calibration closer to the actual conditions the measurement was performed:
