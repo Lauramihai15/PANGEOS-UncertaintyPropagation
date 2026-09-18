@@ -9,15 +9,6 @@ relative to the notebook itself (e.g. `../data/case1b-plot103/`). To use
 your own data, create a similarly-structured folder and point the
 notebook's `DATA_DIR` variable at it.
 
-## Case 1b — plot-mean aggregation (`case_1b-Ex1_PlotMean_Uncertainty.ipynb`)
-
-Folder: `data/case1b-plot103/`
-
-| File | Format |
-|---|---|
-| `point1_reflectance.csv` … `point5_reflectance.csv` | One CSV per measurement point (5 total). Columns: wavelength (nm) and reflectance value, plus its random and systematic uncertainty. Already-calibrated reflectance is expected as input — this notebook does not calibrate raw data. |
-| `official_plot_mean_reflectance.csv` | Optional. Only needed to reproduce the validation check against a reference plot-mean. |
-
 ## Piccolo Doppio — complete calibration pipeline (`case_piccolo-Ex_CompleteCalibrationPipeline.ipynb`)
 
 Folder: `data/case-piccolo-plot103-full/`
@@ -38,6 +29,15 @@ wavelength, one column per repeat scan. `_IT_` files are a single number
 (integration time). `RadianceStd`/`IrradianceStd` are your laboratory
 reference standard's known values, one per wavelength. `coeffsNonlin` is
 the detector's non-linearity correction polynomial coefficients.
+
+## Case 1b — plot-mean aggregation (`case_1b-Ex1_PlotMean_Uncertainty.ipynb`)
+
+Folder: `data/case1b-plot103/`
+
+| File | Format |
+|---|---|
+| `point1_reflectance.csv` … `point5_reflectance.csv` | One CSV per measurement point (5 total). Columns: wavelength (nm) and reflectance value, plus its random and systematic uncertainty. Already-calibrated reflectance is expected as input — this notebook does not calibrate raw data. |
+| `official_plot_mean_reflectance.csv` | Optional. Only needed to reproduce the validation check against a reference plot-mean. |
 
 ## ASD FieldSpec 4 (`case_asdsvc-Ex1_FieldUncertaintyBudget.ipynb`, `case_asdsvc-Ex2_VegetationIndices.ipynb`)
 
@@ -89,8 +89,8 @@ reflectance, u_panel, u_plot, u_ROI, u_total).
 ASD_WP1=20, ASD_WP2=21, SVC_WP1=26, SVC_WP2=27, Altum_GP=31, Altum_WP2=32,
 REMX_GP=37, REMX_WP2=38), with index blocks of 7 columns each (point,
 value, u_r, u_s, u_homogeneity, u_c, U_k2) in a fixed order: PRI, NDVI,
-NIRv, EVI, MTCI, OSAVI. Not every sensor has every index (e.g. Altum has no
-PRI, REMX has no MTCI) — those cells are simply empty.
+NIRv, EVI, MTCI, OSAVI. Not every sensor has every index (e.g. Altum has no PRI
+or MTCI, REMX has no MTCI), those cells are simply empty.
 
 To use your own campaign's data, either reproduce this exact sheet/column
 layout, or edit the `sensors`, `row_map`, and `index_start` dictionaries at
