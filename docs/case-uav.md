@@ -2,14 +2,14 @@
 
 The two ground-based cases in this section ([Piccolo](case-piccolo.md),
 [ASD/SVC](case-asd-svc.md)) measure one point at a time. This UAV sensors case covers the
-2025 Norway campaign's two UAV-mounted multispectral cameras — **Altum** (5
-bands + thermal) and **REMX Dual** (10 bands) — which instead produce a full
+2025 Norway campaign's two UAV-mounted multispectral cameras, **Altum** (5
+bands + thermal) and **REMX Dual** (10 bands), which instead produce a full
 orthomosaic map of the field in each flight, and derive plot-level
 reflectance from a region of interest (ROI) within that map rather than a
 point measurement.
 
 > **Note:** This example can be applied to any UAV multispectral camera
-    The grey panel (GP) versus white panel(WP2) comparison and the panel/plot/ROI
+    The grey panel (GP) versus white panel (WP2) comparison and the panel/plot/ROI
     uncertainty model shown here apply to **any UAV multispectral camera**
     processed through a similar orthomosaic + ROI extraction workflow, not
     only Altum and REMX. The 2025 Norway data is a concrete worked example;
@@ -88,8 +88,8 @@ EVI where a blue band is available), but **not every index is available on
 every camera**, this is a hardware constraint of the multispectral filters
 each camera carries:
 
-- **Altum** (no 580nm band): NDVI, OSAVI, EVI (no PRI).
-- **REMX** (no red-edge band at ~709/754nm): NDVI, OSAVI, EVI, PRI (no MTCI).
+- **Altum** (no band near 531nm, and none near 681/709/754nm): NDVI, OSAVI, EVI, no PRI, no MTCI.
+- **REMX** (bands at 705/717/740nm, but none near 681nm): NDVI, OSAVI, EVI, PRI, no MTCI.
 
 Where an index needs a wavelength the camera does not have, the nearest
 available band is used instead and the resulting spectral mismatch is
