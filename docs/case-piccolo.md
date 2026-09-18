@@ -5,8 +5,9 @@ notebooks teach the *concepts* of uncertainty propagation for the Piccolo Doppio
 
 This page focuses on what each stage produces and how uncertainty flows to the next. The complete implementation, including the calibration chain itself, is available as a runnable notebook below, for readers who want to reproduce every step on their own data.
 
-!!! note "Not just for this dataset"
-    
+!!! note ## This example be applied to any similar device
+
+
     The Piccolo Doppio system is one example of a broader instrument class: 
     a **dual fibre spectrometer built around Ocean Insight QE series spectrometers**, 
     with a cosine diffuser fore optic for irradiance and a collimator (or bare fibre) for radiance. 
