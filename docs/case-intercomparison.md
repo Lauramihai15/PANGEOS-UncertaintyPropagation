@@ -34,20 +34,17 @@ source of disagreement:
 
 | Comparison | Isolates |
 |---|---|
-| ASD vs. SVC | Two independent instruments, same method (white-panel ratio), same field of view class → tests instrument-to-instrument agreement when the *method* is held constant. [Try it yourself](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_intercomparison-Ex1_ASD_vs_SVC.ipynb) with real Plot 103 data, including real acquisition timestamps parsed directly from the SVC instrument files. |
-| Piccolo FLMS vs. Piccolo QEP | Two detectors on the *same* physical system → tests internal consistency of one instrument, not cross-instrument agreement |
-| Altum / REMX vs. Piccolo FLMS | UAV vs. ground point measurement → tests agreement across completely different spatial footprints and calibration methods |
-| Altum / REMX vs. Piccolo QEP | Same, against the second Piccolo detector |
+| Piccolo FLMS vs. ASD, SVC, QEP | Ground point spectrometers against each other → tests instrument-to-instrument agreement across different measurement methods |
+| Piccolo FLMS vs. Altum / REMX | UAV vs. ground point measurement → tests agreement across completely different spatial footprints and calibration methods |
 
 Each comparison is repeated for both white reference panels used in the
 ground campaign (labelled WP1 and WP2 in this training material), since the
 panel itself carries its own calibration uncertainty and is part of what
-could cause two instruments to disagree. This is not a minor detail: for
-ASD vs. SVC at Plot 103, agreement is ~92% of wavelengths (k=1) when both
-instruments are referenced to WP1, but only ~54% when both are referenced to
-WP2 instead — the *same two instruments*, the same targets, only the
-reference panel changed. See the notebook linked above for the full
-comparison.
+could cause two instruments to disagree.
+[Try it yourself](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_intercomparison-Ex2_Reflectance_AllSensors.ipynb)
+with real Plot 103 data — [reflectance](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_intercomparison-Ex2_Reflectance_AllSensors.ipynb)
+and [vegetation indices](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_intercomparison-Ex3_Indices_AllSensors.ipynb)
+are covered in two separate notebooks.
 
 ## Why each sensor still needs its own honest budget first
 

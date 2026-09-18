@@ -69,18 +69,7 @@ Folder: `data/case-uav-plot103/`
 | `remx_greypanel.csv`, `remx_whitepanel.csv` | Same columns, for the REMX camera. |
 | `official_altum_indices.csv`, `official_remx_indices.csv` | Reference/validation data only. |
 
-## Cross-sensor intercomparison (`case_intercomparison-Ex1_ASD_vs_SVC.ipynb`)
-
-Folders: `data/case-intercomparison-plot103/` and `data/case-asd-svc-plot103/`
-
-| File | Format |
-|---|---|
-| `svc_raw/*.sig` | Raw SVC instrument files (plain text), one per scan — self-describing header plus a data block with wavelength, reference DN, target DN, and reflectance ratio, and two acquisition timestamps. |
-| `official_svc_reflectance.csv`, `official_asd_wp1_reference.csv` | Reference reflectance spectra used for the agreement test. |
-| `asd_u_total_all_plots.csv`, `svc_u_total_all_plots.csv` | Combined uncertainty per plot/panel — columns named `<plot>_<panel>` (e.g. `103_AM`). |
-| `official_ASD_SVC_agreement_k1.csv`, `official_ASD_SVC_agreement_k2.csv` | Reference E_N agreement values — validation only. |
-
-## Cross-sensor intercomparison — FLMS vs. all sensors (`case_intercomparison-Ex2_FLMS_vs_AllSensors.ipynb`)
+## Cross-sensor intercomparison — FLMS vs. all sensors (`case_intercomparison-Ex2_Reflectance_AllSensors.ipynb`, `case_intercomparison-Ex3_Indices_AllSensors.ipynb`)
 
 Folder: `data/case-intercomparison-plot103-full/`
 
