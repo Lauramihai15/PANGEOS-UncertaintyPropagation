@@ -10,6 +10,7 @@ nav:
       - "Case: ASD & SVC": case-asd-svc.md
       - "Case: UAV sensors (Altum & REMX)": case-uav.md
       - "Case: cross-sensor intercomparison": case-intercomparison.md
+  - Data formats: data-formats.md
   - Contributors: contributors.md
 
 theme:
