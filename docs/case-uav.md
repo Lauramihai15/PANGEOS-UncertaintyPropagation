@@ -97,7 +97,6 @@ treated as an additional, acknowledged source of uncertainty for that
 index, not silently absorbed into the result.
 
 TRY IT YOURSELF:
-
     [`case_uav-Ex2_VegetationIndices.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_uav-Ex2_VegetationIndices.ipynb)
     computes NDVI/OSAVI/EVI (and PRI for REMX) from the real Plot 103 reflectance.
 
