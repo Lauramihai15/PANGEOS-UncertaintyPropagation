@@ -8,7 +8,7 @@ orthomosaic map of the field in each flight, and derive plot-level
 reflectance from a region of interest (ROI) within that map rather than a
 point measurement.
 
-!!! note “This example can be applied to any UAV multispectral camera"
+> **Note:** This example can be applied to any UAV multispectral camera
     The grey panel (GP) versus white panel(WP2) comparison and the panel/plot/ROI
     uncertainty model shown here apply to **any UAV multispectral camera**
     processed through a similar orthomosaic + ROI extraction workflow, not
