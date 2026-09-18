@@ -18,11 +18,19 @@ Bouras, E.H., Kefauver, S.C., Shafiee, S., Rastogi, A., Mihai, L. *Uncertainty p
 measurements of vegetation stress in sub-optimal conditions.*
 
 ## Building the site locally
-
-```
 pip install -r docs-requirements.txt
 mkdocs serve
-```
+
+## Running the notebooks
+To run the notebooks in `notebooks/` on your own machine:
+
+1. Install Python (miniconda recommended).
+2. Install the required packages: pip install -r notebooks-requirements.txt
+3. Launch Jupyter from the repository folder: jupyter lab
+4. Open a notebook from the `notebooks/` folder and run its cells.
+
+Each notebook loads its own input data from the `data/` folder — see each
+case's page for the expected file format if you want to use your own data.
 
 ## License
 
