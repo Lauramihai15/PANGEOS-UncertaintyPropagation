@@ -1,4 +1,4 @@
-# Case: Piccolo Doppio (FLMS/QEP)
+# Piccolo Doppio (FLMS/QEP) uncertainty propagation case
 
 The [Case 1](https://github.com/pangeos-cost/uq-training/blob/main/notebooks/case_1-Ex0-Piccolo.ipynb)
 notebooks teach the basics of uncertainty propagation for the Piccolo Doppio system using one clean, minimal example. This case study extends this case using the same approach to the full 2025 Norway field campaign, on 12 wheat plots measured around solar noon under sub optimal, variable cloud illumination, applying the same ideas at full scale: two detectors (FLMS and QEP, from Ocean Insight, USA), a calibration chain, and five vegetation indices, all with random and systematic uncertainty tracked separately and propagated with `punpy` (CoMet toolkit).
