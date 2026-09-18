@@ -1,102 +1,36 @@
 # Case: Piccolo Doppio (FLMS/QEP)
 
 The [Case 1](https://github.com/pangeos-cost/uq-training/blob/main/notebooks/case_1-Ex0-Piccolo.ipynb)
-notebooks teach the *concepts* of uncertainty propagation for the Piccolo
-Doppio system using one clean, minimal example. This case study extends that
-same approach to the full 2025 Norway field campaign — 12 wheat plots
-measured around solar noon under sub-optimal, variable-cloud illumination —
-applying the same ideas at full scale: two detectors (FLMS and QEP), a
-calibration chain, and five vegetation indices, all with random *and*
-systematic uncertainty tracked separately and propagated with `punpy`.
+notebooks teach the *concepts* of uncertainty propagation for the Piccolo Doppio system using one clean, minimal example. This case study extends this case using the same approach to the full 2025 Norway field campaign, on 12 wheat plots measured around solar noon under sub optimal, variable cloud illumination, applying the same ideas at full scale: two detectors (FLMS and QEP, from Ocean Insight, USA), a calibration chain, and five vegetation indices, all with random and systematic uncertainty tracked separately and propagated with `punpy` (Comet toolkit).
 
-This page is a **map of that pipeline**, focused on what each stage produces
-and how uncertainty flows from it to the next — not on how each stage is
-implemented internally. The laboratory and field **calibration methodology**
-itself is deliberately treated as a black box here and not described; what
-matters for this page is its role as a *supplier of numbers* (calibrated
-values and their uncertainty) to everything downstream.
+This page focuses on what each stage produces and how uncertainty flows to the next. The complete implementation, including the calibration chain itself, is available as a runnable notebook below, for readers who want to reproduce every step on their own data.
 
-!!! note "Status"
-    This describes the pipeline as it exists in the underlying research
-    code, not yet published in this repository in adapted form. Findings and
-    figures referenced throughout are from Werfeli, Mihai *et al.* (in
-    review), *"Uncertainty propagation and intercomparison of multi-sensor
-    measurements of vegetation stress in sub-optimal conditions."*
+!!! NOTE: The Piccolo Doppio system is one example of a broader instrument class: a **dual fibre spectrometer built around Ocean Insight QE series spectrometers**, with a cosine diffuser fore optic for irradiance and a
+collimator (or bare fibre) for radiance. The same measurement equation, calibration chain structure, and uncertainty propagation approach can be applied directly to other systems built the same way,  such as **FLOX box** and similar custom dual optic QE setups. 
+The 2025 Norway data is used throughout as a concrete worked example so the process is easy to follow; every step is written to be re run on your own data by substituting your own files in the same format.
 
-!!! tip "Not just for this dataset"
-    The Piccolo Doppio system is one example of a broader instrument class:
-    a **dual-fibre spectrometer built around Ocean Insight QE-series
-    detectors**, with a cosine-diffuser fore optic for irradiance and a
-    collimator (or bare fibre) for radiance. The same measurement equation,
-    calibration-chain structure, and uncertainty propagation approach apply
-    directly to other systems built the same way — including **FLOX** and
-    similar custom dual-optic QE setups. The 2025 Norway data is used
-    throughout as a concrete worked example so the process is easy to
-    follow; every step is written to be re-run on your own data by
-    substituting your own files in the same format.
+## Calibration chain
 
-## How it differs from Case 1
+A spectrometer's raw output is not a physical quantity, it is a digital count/number (DN) that depends on the specific detector, its exposure time, its temperature, and how it has drifted since it was last checked against a known reference (a standard). Before anything scientifically meaningful (radiance, irradiance, reflectance) can be computed, the DNs has to be traced back to a physical unit through an unbroken chain of comparisons against reference standards, this is what *traceability* means.
 
-| | Case 1 teaching notebook | Full pipeline |
-|---|---|---|
-| Plots | 1 example dataset | 12 field plots |
-| Detectors | FLMS only | FLMS **and** QEP, combined |
-| Calibration | lab calibration only | full lab + field calibration chain (see below) |
-| Uncertainty propagation | manual arithmetic, deterministic | `punpy` Monte Carlo, 10,000 samples |
-| Random vs. systematic | not separated | tracked as two separate components throughout, combined only at the end |
-| Correlation structure | not modelled | explicit correlation matrices between wavelengths/bands feeding into each index |
-| Cosine response | not included | applied as an additional systematic component on irradiance, per plot (see below) |
-| Outputs | a single reflectance spectrum | reflectance and 5 vegetation indices, all with combined uncertainty, per point and per plot mean |
+In this pipeline, that traceability chain has three links, each one re linking the calibration closer to the actual conditions the measurement was performed:
 
-## Why a calibration chain is needed at all
+1. **Laboratory calibration** — the detector's raw response is related to a radiance/irradiance standard under controlled laboratory conditions.
+2. **Laboratory validation against a transfer standard (ValGEOS)** — the lab. calibration is checked against an independent, NIST traceable transfer standard, confirming it is trustworthy before it leaves the lab.
+3. **Field calibration** — the validated calibration is relinked using a field validation measurement, to account for whatever has changed (temperature, transport, time elapsed) between the lab and the actual field campaign. 
 
-A spectrometer's raw output is not a physical quantity — it is a digital
-count that depends on the specific detector, its exposure time, its
-temperature, and how it has drifted since it was last checked against a
-known reference. Before anything scientifically meaningful (radiance,
-irradiance, reflectance) can be computed, that raw count has to be traced
-back to a physical unit through an unbroken chain of comparisons against
-reference standards — this is what *traceability* means.
+Skipping any of these steps would mean trusting that nothing changed between one context and the next, exactly the kind of unquantified assumption this whole training module exists to avoid.
 
-In this pipeline, that traceability chain has three links, each one
-re-anchoring the calibration closer to the actual conditions the
-measurement was taken in:
+## Outputs of traceability chain
 
-1. **Laboratory calibration** — the detector's raw response is related to a
-   radiance/irradiance standard under controlled laboratory conditions.
-2. **Laboratory validation against a transfer standard (ValGEOS)** — the lab
-   calibration is checked against an independent, NIST-traceable transfer
-   standard, confirming it is trustworthy before it leaves the lab.
-3. **Field calibration** — the validated calibration is re-anchored using a
-   field validation measurement, to account for whatever has changed
-   (temperature, transport, time elapsed) between the lab and the actual
-   field campaign.
+Each of the three calibration steps outputs, per detector (FLMS and QEP) and per wavelength:
+- a **calibrated value** (a calibration coefficient, or a validated radiance/irradiance), and
+- its **uncertainty, already split into a random component and a systematic component**, not a single combined number. The uncertainties from previous step is propagated to the next one, so at the end we obtain the results we need with total propagated uncertainty, for the entire chain.
 
-Skipping any of these links would mean trusting that nothing changed between
-one context and the next — exactly the kind of unquantified assumption this
-whole training module exists to avoid.
+That split matters downstream: a random component shrinks when you average repeated measurements; a systematic (common) one does not. By the time the field calibration step hands off its result, every
+downstream calculation treats it as: *a value, a random uncertainty, and a systematic uncertainty* — three numbers (per wavelength) in, three numbers out, at every subsequent step.
 
-**The methodology behind each of these three steps is not documented on this
-page.** What matters here is what each step hands off to the rest of the
-pipeline.
-
-## What the calibration chain produces
-
-Each of the three calibration steps outputs, per detector (FLMS and QEP) and
-per wavelength:
-
-- a **calibrated value** (a calibration coefficient, or a validated
-  radiance/irradiance), and
-- its **uncertainty, already split into a random component and a systematic
-  component** — not a single combined number.
-
-That split matters downstream: a random component shrinks when you average
-repeated measurements; a systematic (common) one does not.
-By the time the field calibration step hands off its result, every
-downstream calculation treats it as: *a value, a random uncertainty, and a
-systematic uncertainty* — three numbers (per wavelength) in, three numbers
-out, at every subsequent step.
-
+How the uncertainty is propagated along the full pipeline can be seen in 
 ## How the uncertainty propagates from there to the final products
 
 From the field calibration coefficients onward, the chain is:
