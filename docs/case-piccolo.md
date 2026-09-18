@@ -16,7 +16,7 @@ This page focuses on what each stage produces and how uncertainty flows to the n
     every step is written to be re-run on your own data by substituting your own files in the same format.
     
 ## Calibration chain
-A spectrometer's raw output is not a physical quantity, it is a digital count/number (DN) that depends on the specific detector, its exposure time, its temperature, and how it has drifted since it was last checked against a known reference (a standard). Before anything scientifically meaningful (radiance, irradiance, reflectance) can be computed, the DNs has to be traced back to a physical unit through an unbroken chain of comparisons against reference standards, this is what *traceability* means.
+A spectrometer's raw output is not a physical quantity, it is a digital count/number (DN) that depends on the specific detector, its exposure time, its temperature, and how it has drifted since it was last checked against a known reference (a standard). Before anything scientifically meaningful (radiance, irradiance, reflectance) can be computed, the DNs has to be traced back to a physical unit through an unbroken chain of comparisons against reference standards, this is what traceability means.
 
 In this pipeline, that traceability chain has three links, each one re linking the calibration closer to the actual conditions the measurement was performed:
 
@@ -74,7 +74,7 @@ The irradiance sensor's cosine receptor deviates from the ideal cosine law. This
 For each of the 5 measurement points per plot, the field calibrated radiance and irradiance are combined into reflectance, with the cosine response term folded in as described above. This is the direct, full scale counterpart of what Case 1 does for a single example point.
 
 ### Plot level mean over 5 points
-The 5 per point spectra are combined into a plot mean in a way that does two things at once: it averages the random component down (more points → less random noise) and adds the point to point spread back in as an extra random term,this is what turns "5 repeated measurements" into the `u(cinhomogeneity)` component from Eq. 3 of the paper. The systematic component is *not* reduced by averaging, because it affects every point in
+The 5 per point spectra are combined into a plot mean in a way that does two things at once: it averages the random component down (more points → less random noise) and adds the point to point spread back in as an extra random term,this is what turns "5 repeated measurements" into the `u(c_inhomogeneity)` component from Eq. 3 of the paper. The systematic component is *not* reduced by averaging, because it affects every point in
 the same way, only its mean is carried forward.
 
 TRY IT YOURSELF:
