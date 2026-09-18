@@ -12,7 +12,7 @@ each notebook).
 | Mike Werfeli | ASD & SVC uncertainty propagation; cross-sensor intercomparison (E<sub>N</sub> agreement) code |
 | Álvaro Sánchez-Virosta | Altum & REMX (UAV) processing pipeline |
 
-Full author list and affiliations for the underlying research: Werfeli, M.,
+Full author list for the underlying research: Werfeli, M.,
 Antala, M., Abdelmajeed, A.Y.A., Sánchez-Virosta, Á., Halem, Z., Merrington,
 A., El-Mejjaouy, Y., Petrovic, B., Hueni, A., Bouras, E.H., Kefauver, S.C.,
 Shafiee, S., Rastogi, A., Mihai, L. (in review). *Uncertainty propagation
