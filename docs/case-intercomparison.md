@@ -12,7 +12,7 @@ can their measurements still be meaningfully compared?**
 The diagram below shows how uncertainty flows from calibration to indices for
 all five instruments, converging on that question.
 
-<img src="images/sensor-fleet-uncertainty-pipeline.svg" alt="Diagram: uncertainty propagation from calibration to vegetation indices, for five optical sensors, converging into a cross-sensor intercomparison step using the E_N ratio" width="100%"/>
+<img src="images/sensor-fleet-full-traceability.png" alt="Complete traceability and uncertainty propagation diagram for the five optical sensors" width="100%"/> 
 
 !!! note "Reference"
     Findings referenced throughout are from Werfeli, Mihai *et al.* (in
