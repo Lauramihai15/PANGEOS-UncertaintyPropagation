@@ -1,26 +1,22 @@
-# Case: Piccolo Doppio (FLMS/QEP)
+# Piccolo Doppio (FLMS/QEP) uncertainty propagation case
 
 The [Case 1](https://github.com/pangeos-cost/uq-training/blob/main/notebooks/case_1-Ex0-Piccolo.ipynb)
-notebooks teach the *concepts* of uncertainty propagation for the Piccolo Doppio system using one clean, minimal example. This case study extends this case using the same approach to the full 2025 Norway field campaign, on 12 wheat plots measured around solar noon under sub optimal, variable cloud illumination, applying the same ideas at full scale: two detectors (FLMS and QEP, from Ocean Insight, USA), a calibration chain, and five vegetation indices, all with random and systematic uncertainty tracked separately and propagated with `punpy` (CoMet toolkit).
+notebooks teach the basics of uncertainty propagation for the Piccolo Doppio system using one clean, minimal example. This case study extends this case using the same approach to the full 2025 Norway field campaign, on 12 wheat plots measured around solar noon under sub optimal, variable cloud illumination, applying the same ideas at full scale: two detectors (FLMS and QEP, from Ocean Insight, USA), a calibration chain, and five vegetation indices, all with random and systematic uncertainty tracked separately and propagated with `punpy` (CoMet toolkit).
 
 This page focuses on what each stage produces and how uncertainty flows to the next. The complete implementation, including the calibration chain itself, is available as a runnable notebook below, for readers who want to reproduce every step on their own data.
 
-!!! note ## This example be applied to any similar device
-
-
-    The Piccolo Doppio system is one example of a broader instrument class: 
+> **Note:** This example be applied to any similar device
+     The Piccolo Doppio system is one example of a broader instrument class: 
     a **dual fibre spectrometer built around Ocean Insight QE series spectrometers**, 
     with a cosine diffuser fore optic for irradiance and a collimator (or bare fibre) for radiance. 
     The same measurement equation, calibration chain structure, and uncertainty propagation approach
     can be applied directly to other systems built the same way, such as **FLOX** and similar custom dual
     optic QE setups.
-
     The 2025 Norway data is used throughout as a concrete worked example so the process is easy to follow;
     every step is written to be re-run on your own data by substituting your own files in the same format.
     
 ## Calibration chain
-
-A spectrometer's raw output is not a physical quantity, it is a digital count/number (DN) that depends on the specific detector, its exposure time, its temperature, and how it has drifted since it was last checked against a known reference (a standard). Before anything scientifically meaningful (radiance, irradiance, reflectance) can be computed, the DNs has to be traced back to a physical unit through an unbroken chain of comparisons against reference standards, this is what *traceability* means.
+A spectrometer's raw output is not a physical quantity, it is a digital count/number (DN) that depends on the specific detector, its exposure time, its temperature, and how it has drifted since it was last checked against a known reference (a standard). Before anything scientifically meaningful (radiance, irradiance, reflectance) can be computed, the DNs has to be traced back to a physical unit through an unbroken chain of comparisons against reference standards, this is what traceability means.
 
 In this pipeline, that traceability chain has three links, each one re linking the calibration closer to the actual conditions the measurement was performed:
 
@@ -78,7 +74,7 @@ The irradiance sensor's cosine receptor deviates from the ideal cosine law. This
 For each of the 5 measurement points per plot, the field calibrated radiance and irradiance are combined into reflectance, with the cosine response term folded in as described above. This is the direct, full scale counterpart of what Case 1 does for a single example point.
 
 ### Plot level mean over 5 points
-The 5 per point spectra are combined into a plot mean in a way that does two things at once: it averages the random component down (more points → less random noise) and adds the point to point spread back in as an extra random term,this is what turns "5 repeated measurements" into the `u(cinhomogeneity)` component from Eq. 3 of the paper. The systematic component is *not* reduced by averaging, because it affects every point in
+The 5 per point spectra are combined into a plot mean in a way that does two things at once: it averages the random component down (more points → less random noise) and adds the point to point spread back in as an extra random term,this is what turns "5 repeated measurements" into the `u(c_inhomogeneity)` component from Eq. 3 of the paper. The systematic component is *not* reduced by averaging, because it affects every point in
 the same way, only its mean is carried forward.
 
 TRY IT YOURSELF:
