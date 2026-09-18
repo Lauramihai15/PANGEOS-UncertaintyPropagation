@@ -1,7 +1,7 @@
 # Case: Piccolo Doppio (FLMS/QEP)
 
 The [Case 1](https://github.com/pangeos-cost/uq-training/blob/main/notebooks/case_1-Ex0-Piccolo.ipynb)
-notebooks teach the *concepts* of uncertainty propagation for the Piccolo Doppio system using one clean, minimal example. This case study extends this case using the same approach to the full 2025 Norway field campaign, on 12 wheat plots measured around solar noon under sub optimal, variable cloud illumination, applying the same ideas at full scale: two detectors (FLMS and QEP, from Ocean Insight, USA), a calibration chain, and five vegetation indices, all with random and systematic uncertainty tracked separately and propagated with `punpy` (Comet toolkit).
+notebooks teach the *concepts* of uncertainty propagation for the Piccolo Doppio system using one clean, minimal example. This case study extends this case using the same approach to the full 2025 Norway field campaign, on 12 wheat plots measured around solar noon under sub optimal, variable cloud illumination, applying the same ideas at full scale: two detectors (FLMS and QEP, from Ocean Insight, USA), a calibration chain, and five vegetation indices, all with random and systematic uncertainty tracked separately and propagated with `punpy` (CoMet toolkit).
 
 This page focuses on what each stage produces and how uncertainty flows to the next. The complete implementation, including the calibration chain itself, is available as a runnable notebook below, for readers who want to reproduce every step on their own data.
 
@@ -69,7 +69,7 @@ vegetation indices (NDVI, EVI, OSAVI, MTCI, PRI)
 ready for cross - sensor comparison, see Case: cross - sensor intercomparison
 ```
 
-At every arrow, uncertainty is propagated with `punpy`'s function from Comet toolkit (which `propagate_random` / `propagate_systematic`, 10,000 samples) rather than carried forward as a single hand derived formula, the same principle taught in Case 1, just applied consistently through many more steps and to many more output quantities.
+At every arrow, uncertainty is propagated with `punpy`'s function from CoMet toolkit (which `propagate_random` / `propagate_systematic`, 10,000 samples) rather than carried forward as a single hand derived formula, the same principle taught in Case 1, just applied consistently through many more steps and to many more output quantities.
 ## Cosine correction
 The irradiance sensor's cosine receptor deviates from the ideal cosine law. This deviation is applied as an *additional* systematic uncertainty on irradiance at the field-measurement step, sized per plot according to solar zenith angle (9.94%, 9.66%, or 10.11% relative uncertainty, matching the paper's reported `u(ccos)` values), treated as a rectangular (uniform) distribution.
 
