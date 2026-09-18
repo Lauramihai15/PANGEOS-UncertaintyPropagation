@@ -1,4 +1,4 @@
-# Case: cross-sensor intercomparison and agreement
+# Cross-sensor intercomparison and agreement case
 
 The three cases in this section ([Piccolo Doppio](case-piccolo.md),
 [ASD & SVC](case-asd-svc.md), [UAV sensors](case-uav.md)) each derive
@@ -14,14 +14,13 @@ all five instruments, converging on that question.
 
 <img src="images/sensor-fleet-full-traceability.png" alt="Complete traceability and uncertainty propagation diagram for the five optical sensors" width="100%"/> 
 
-!!! note "Reference"
-    Findings referenced throughout are from Werfeli, Mihai *et al.* (in
-    review), *"Uncertainty propagation and intercomparison of multi-sensor
+> **Note:** Findings referenced throughout are from Werfeli, Mihai *et al.* (2026),
+    *"Uncertainty propagation and intercomparison of multi-sensor
     measurements of vegetation stress in sub-optimal conditions."*
 
-!!! tip "Not just for this dataset"
+> **Note:** This material can be applied for any similar devices.
     The E<sub>N</sub>-ratio comparison method shown here applies to **any
-    two independent instruments** measuring the same target, not only the
+    independent instruments** measuring the same target, not only the
     sensors in this campaign. The 2025 Norway data is a concrete worked
     example; the code is written to run on your own paired measurements and
     their own uncertainty budgets in the same way.
@@ -29,12 +28,12 @@ all five instruments, converging on that question.
 ## The comparisons actually run
 
 Rather than one blanket "do the sensors agree?" question, the real analysis
-runs several distinct, targeted comparisons — each isolating one specific
+runs several distinct, targeted comparisons, each isolating one specific
 source of disagreement:
 
 | Comparison | Isolates |
 |---|---|
-| Piccolo FLMS vs. ASD, SVC, QEP | Ground point spectrometers against each other → tests instrument-to-instrument agreement across different measurement methods |
+| Piccolo FLMS vs. ASD, SVC, QEP | Ground point spectrometers against each other → tests instrument to instrument agreement across different measurement methods |
 | Piccolo FLMS vs. Altum / REMX | UAV vs. ground point measurement → tests agreement across completely different spatial footprints and calibration methods |
 
 Each comparison is repeated for both white reference panels used in the
