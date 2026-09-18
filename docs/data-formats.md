@@ -80,6 +80,33 @@ Folders: `data/case-intercomparison-plot103/` and `data/case-asd-svc-plot103/`
 | `asd_u_total_all_plots.csv`, `svc_u_total_all_plots.csv` | Combined uncertainty per plot/panel — columns named `<plot>_<panel>` (e.g. `103_AM`). |
 | `official_ASD_SVC_agreement_k1.csv`, `official_ASD_SVC_agreement_k2.csv` | Reference E_N agreement values — validation only. |
 
+## Cross-sensor intercomparison — FLMS vs. all sensors (`case_intercomparison-Ex2_FLMS_vs_AllSensors.ipynb`)
+
+Folder: `data/case-intercomparison-plot103-full/`
+
+| File | Format |
+|---|---|
+| `Indexes-7_cos_16062026.xlsx` | The full campaign results workbook. Two sheets are used for Plot 103: `Reflectance_103_all` and `Indexes103` (the same naming pattern — `Reflectance_<plot>_all` / `Indexes<plot>` — applies to other plots). |
+
+**`Reflectance_103_all`** — one block of columns per sensor/panel, data
+starting at row 3 (rows 1-2 are headers): columns 1-7 = FLMS (wavelength,
+reflectance, u_random, u_systematic, —, u_combined, U_expanded k=2), 8-14 =
+QEP (same layout), 15-25 = ASD (one wavelength column, then WP1/WP2
+reflectance and uncertainty columns interleaved), 26-36 = SVC (same
+pattern), 37-60 = Altum GP/WP2 and REMX GP/WP2 (6 columns each: wavelength,
+reflectance, u_panel, u_plot, u_ROI, u_total).
+
+**`Indexes103`** — one row per sensor at fixed row numbers (FLMS=8, QEP=16,
+ASD_WP1=20, ASD_WP2=21, SVC_WP1=26, SVC_WP2=27, Altum_GP=31, Altum_WP2=32,
+REMX_GP=37, REMX_WP2=38), with index blocks of 7 columns each (point,
+value, u_r, u_s, u_homogeneity, u_c, U_k2) in a fixed order: PRI, NDVI,
+NIRv, EVI, MTCI, OSAVI. Not every sensor has every index (e.g. Altum has no
+PRI, REMX has no MTCI) — those cells are simply empty.
+
+To use your own campaign's data, either reproduce this exact sheet/column
+layout, or edit the `sensors`, `row_map`, and `index_start` dictionaries at
+the top of the notebook to match your own workbook.
+
 ---
 
 To adapt any of these notebooks to your own instrument or campaign, keep
