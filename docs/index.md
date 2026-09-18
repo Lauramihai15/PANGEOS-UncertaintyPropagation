@@ -59,7 +59,7 @@ The case study shows which sensor comparisons were performed and how variable cl
 It also highlights an important principle: **a meaningful intercomparison is only possible when the uncertainty budget of each individual measurement system has first been evaluated properly.**
 
   TRY IT YOURSELF:
-—> [`case_intercomparison-Ex1_ASD_vs_SVC.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_intercomparison-Ex1_ASD_vs_SVC.ipynb) — performs a real ASD versus SVC agreement test for Plot 103 and includes the actual acquisition timestamps, showing that the nominal 10 minute comparison window was exceeded in practice.
+—> [`case_intercomparison-Ex2_Reflectance_AllSensors.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_intercomparison-Ex2_Reflectance_AllSensors.ipynb) and [`case_intercomparison-Ex3_Indices_AllSensors.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_intercomparison-Ex3_Indices_AllSensors.ipynb) — compare Piccolo FLMS against all other sensors for Plot 103, for reflectance and for the five vegetation indices.
 
 
 ## START WITH THIS IF PASSED THROUGH BASIC CASES 1 and 2
