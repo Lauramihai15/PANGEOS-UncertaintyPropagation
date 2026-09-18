@@ -1,4 +1,4 @@
-# Case: Uncertainty propagation for ASD FieldSpec 4 & SVC HR-1024i
+# ASD FieldSpec 4 & SVC HR-1024i uncertainty propagation case
 
 The previous training material, [Case 2](https://github.com/pangeos-cost/uq-training/blob/main/notebooks/case_2-Ex1-VI.ipynb), presented a basic case of uncertainty propagation for reflectance factor measurements, using ASD data as an example.
 
