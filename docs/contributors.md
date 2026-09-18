@@ -15,6 +15,6 @@ each notebook).
 Full author list for the underlying research: Werfeli, M.,
 Antala, M., Abdelmajeed, A.Y.A., Sánchez-Virosta, Á., Halem, Z., Merrington,
 A., El-Mejjaouy, Y., Petrovic, B., Hueni, A., Bouras, E.H., Kefauver, S.C.,
-Shafiee, S., Rastogi, A., Mihai, L. (in review). *Uncertainty propagation
+Shafiee, S., Rastogi, A., Mihai, L. (2026). *Uncertainty propagation
 and intercomparison of multi-sensor measurements of vegetation stress in
 sub-optimal conditions.*
