@@ -2,8 +2,9 @@
 
 The [case studies](index.md) in this section adapt real research code into
 training material. This page credits who wrote the underlying code each
-case is based on — separate from who prepared and maintains the training
-material itself (see each notebook's `Authors:` line).
+case is based on, separate from who prepared and maintains the training
+material itself (see the "Code" / "Training material" note at the end of
+each notebook).
 
 | Contributor | Code contribution |
 |---|---|
