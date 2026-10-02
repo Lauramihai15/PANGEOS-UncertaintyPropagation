@@ -12,7 +12,7 @@ Four cases, each with documentation and runnable notebooks:
 - UAV sensors (Altum & REMX)
 - Cross-sensor intercomparison
 
-**Reference:** Werfeli, M., Antala, M., Abdelmajeed, A.Y.A. et al. Uncertainty propagation and intercomparison of multi-sensor measurements of vegetation stress in sub-optimal conditions. Precision Agric 27, 153 (2026). https://doi.org/10.1007/s11119-026-10455-1*
+**Reference:** Werfeli, M., Antala, M., Abdelmajeed, A.Y.A. et al. Uncertainty propagation and intercomparison of multi-sensor measurements of vegetation stress in sub-optimal conditions. Precision Agric 27, 153 (2026). https://doi.org/10.1007/s11119-026-10455-1
 
 ## Building the site locally
 pip install -r docs-requirements.txt
