@@ -5,30 +5,33 @@ measurements under sub-optimal field conditions, extending the [PANGEOS
 COST Action uq-training course](https://github.com/pangeos-cost/uq-training)
 with real 2025 Norway field-campaign data.
 
-Four cases, each with documentation and runnable notebooks:
+Four notebooks, each with its documentation page:
 
-- Piccolo Doppio (FLMS/QEP)
-- ASD FieldSpec 4 & SVC HR-1024i
-- UAV sensors (Altum & REMX)
-- Cross-sensor intercomparison
+- `CaseEx1_Piccolo_UncProp.ipynb` — Piccolo Doppio (FLMS): full pipeline from raw signal to reflectance and vegetation indices
+- `CaseEx2_ASD-SVC_UncProp.ipynb` — ASD FieldSpec 4 and SVC HR-1024i: reflectance and vegetation indices
+- `CaseEx3_Altum-REMX_UncProp.ipynb` — UAV sensors (Altum and REMX): uncertainty budget and vegetation indices
+- `MeasAgreement_4Sensors.ipynb` — cross-sensor measurement agreement (E<sub>N</sub>)
 
 **Reference:** Werfeli, M., Antala, M., Abdelmajeed, A.Y.A. et al. Uncertainty propagation and intercomparison of multi-sensor measurements of vegetation stress in sub-optimal conditions. Precision Agric 27, 153 (2026). https://doi.org/10.1007/s11119-026-10455-1
 
-## STEPS REQUIRED PREVIOUS TO PROPAGATION
 ## Building the site locally
+
+```bash
 pip install -r docs-requirements.txt
 mkdocs serve
+```
 
 ## Running the notebooks
+
 To run the notebooks in `notebooks/` on your own machine:
 
 1. Install Python (miniconda recommended).
-2. Install the required packages: pip install -r notebooks-requirements.txt
-3. Launch Jupyter from the repository folder: jupyter lab
+2. Install the required packages: `pip install -r notebooks-requirements.txt`
+3. Launch Jupyter from the repository folder: `jupyter lab`
 4. Open a notebook from the `notebooks/` folder and run its cells.
 
-Each notebook loads its own input data from the `data/` folder — see each
-case's page for the expected file format if you want to use your own data.
+Each notebook loads its own input data from the `data/` folder. See the
+[input data formats](docs/data-formats.md) if you want to use your own data.
 
 ## License
 

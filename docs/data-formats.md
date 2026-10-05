@@ -1,21 +1,21 @@
 # Input data formats
 
-This page lists, for every notebook, exactly what input files it expects,
-where it expects to find them, and what format each file must be in, so
-you can substitute your own measurements and run the same code.
+This page lists, for every notebook, exactly which input files it expects,
+where it expects to find them, and in what format, so that you can
+substitute your own measurements and run the same code.
 
 Every notebook loads its data from a folder under `data/`, using a path
-relative to the notebook itself (e.g. `../data/case1b-plot103/`). To use
-your own data, create a similarly structured folder and point the
-notebook's `DATA_DIR` variable at it.
+relative to the notebook itself (e.g. `../data/case-piccolo-plot103-full/`). To use
+your own data, create a similarly structured folder and point the notebook's
+`DATA_DIR` variable (or the file path at the top of the notebook) at it.
 
-## Piccolo Doppio, complete calibration pipeline (`case_piccolo-Ex_CompleteCalibrationPipeline.ipynb`)
+## Piccolo Doppio (`CaseEx1_Piccolo_UncProp.ipynb`)
 
 Folder: `data/case-piccolo-plot103-full/`
 
 Plain-text `.txt` files, one value or one column of repeat measurements per
 file, named `<detector>_<quantity>_<stage>.txt` (detector = `FLMS` or
-`QEP`). Required for **each of the three calibration stages**:
+`QEP`). The following are required for **each of the calibration stages**:
 
 | Stage | Files needed (per detector) |
 |---|---|
@@ -25,80 +25,54 @@ file, named `<detector>_<quantity>_<stage>.txt` (detector = `FLMS` or
 | Field measurement, per point | For each point `p1`…`p5`: `{det}_L_lg_ITCorr_Field2025_{plot}p{n}.txt`, `{det}_L_dk_ITCorr_Field2025_{plot}p{n}.txt`, `{det}_L_IT_Field2025_{plot}p{n}.txt` (and the `_E_` equivalents) |
 
 Each `_lg_`/`_dk_` file is a repeat-measurement matrix: one row per
-wavelength, one column per repeat scan. `_IT_` files are a single number
-(integration time). `RadianceStd`/`IrradianceStd` are your laboratory
-reference standard's known values, one per wavelength. `coeffsNonlin` is
-the detector's non-linearity correction polynomial coefficients.
+wavelength, one column per repeat scan. `_IT_` files contain a single number
+(the integration time). `RadianceStd`/`IrradianceStd` are the known values of your
+laboratory reference standard, one per wavelength. `coeffsNonlin` contains the
+coefficients of the detector's non-linearity correction polynomial.
 
-## Case 1b, plot-mean aggregation (`case_1b-Ex1_PlotMean_Uncertainty.ipynb`)
-
-Folder: `data/case1b-plot103/`
-
-| File | Format |
-|---|---|
-| `point1_reflectance.csv` … `point5_reflectance.csv` | One CSV per measurement point (5 total). Columns: wavelength (nm) and reflectance value, plus its random and systematic uncertainty. Already-calibrated reflectance is expected as input, this notebook does not calibrate raw data. |
-| `official_plot_mean_reflectance.csv` | Optional. Only needed to reproduce the validation check against a reference plot-mean. |
-
-## ASD FieldSpec 4 (`case_asdsvc-Ex1_FieldUncertaintyBudget.ipynb`, `case_asdsvc-Ex2_VegetationIndices.ipynb`)
+## ASD FieldSpec 4 and SVC HR-1024i (`CaseEx2_ASD-SVC_UncProp.ipynb`)
 
 Folder: `data/case-asd-svc-plot103/`
 
 | File | Format |
 |---|---|
-| `raw_ASD_plot103_105.csv` | Raw ASD field-day export. One row per scan. Columns 0-21: instrument metadata (must include `Acquisition Time` and `File Name`, the latter identifying each row as a target scan (`plot_<id>_<position>_*`) or white-reference scan (`plot_<id>_fsfwr_*` for panel WP1, `plot_<id>_laurawr_*` for panel WP2)). Columns 22 onward: one column per wavelength (nm), 350-2500nm, raw digital numbers. |
+| `raw_ASD_plot103_105.csv` | Raw ASD field-day export. One row per scan. Columns 0-21: instrument metadata (must include `Acquisition Time` and `File Name`; the latter identifies each row as a target scan (`plot_<id>_<position>_*`) or a white-reference scan (`plot_<id>_fsfwr_*` for panel WP1, `plot_<id>_laurawr_*` for panel WP2)). Columns 22 onwards: one column per wavelength (nm), 350-2500 nm, raw digital numbers. |
+| `raw_SVC_plot103_105.csv` | Raw SVC export with the same row types. The `File Name` is in column 8 and the wavelengths start at column 16. The wavelength grid is **not** uniformly spaced; the notebook interpolates it onto a uniform 1 nm grid, so you only need to provide the raw export as it is. |
 | `panel_certificate_WP1_AM.csv` | Columns: `lambda`, `rho` (panel reflectance factor per wavelength). |
 | `panel_uncertainty_WP1_AM.csv` | Columns: `lambda`, `sigma (k=2)` (panel calibration uncertainty, k=2, per wavelength). |
-| `panel_certificate_WP2_LM.csv`, `panel_uncertainty_WP2_LM.csv` | Same quantities, second panel's certificate format (integer + decimal columns; see the notebook's `rho_panel_interp` function for the exact parsing). |
-| `asd_reflectance_repeats.csv`, `panel_uncertainty_k2.csv`, `official_vegetation_indices.csv` | Reference/validation data for Ex2, not required to run your own data through the pipeline, only to reproduce the validation check. |
+| `panel_certificate_WP2_LM.csv`, `panel_uncertainty_WP2_LM.csv` | The same quantities for the second panel, in that panel's certificate format (integer + decimal columns; see the `rho_panel_interp` function in the notebook for the exact parsing). |
 
-## SVC HR-1024i (`case_svc-Ex1_FieldUncertaintyBudget.ipynb`)
+The same two panel certificates are used for the ASD and the SVC.
 
-Folder: `data/case-asd-svc-plot103/`
-
-Same structure as ASD above, except:
-- `raw_SVC_plot103_105.csv`, File Name at column 8, wavelengths start at column 16, and the wavelength grid is **not** uniformly spaced (interpolated onto a uniform 1nm grid inside the notebook, no action needed on your part beyond providing the raw export as it is).
-- Uses the **same** panel certificate files as ASD (`panel_certificate_WP1_AM.csv`, `panel_certificate_WP2_LM.csv`, and their uncertainty files).
-
-## UAV, Altum & REMX (`case_uav-Ex1_AltumREMX_MethodComparison.ipynb`, `case_uav-Ex2_VegetationIndices.ipynb`)
-
-Folder: `data/case-uav-plot103/`
-
-| File | Format |
-|---|---|
-| `altum_greypanel.csv`, `altum_whitepanel.csv` | Per-band reflectance for the Altum camera, one calibration method per file. Columns: wavelength (nm), reflectance, `u_panel`, `u_plot`, `u_roi`. |
-| `remx_greypanel.csv`, `remx_whitepanel.csv` | Same columns, for the REMX camera. |
-| `official_altum_indices.csv`, `official_remx_indices.csv` | Reference/validation data only. |
-
-## Cross-sensor intercomparison, FLMS vs. all sensors (`case_intercomparison-Ex2_Reflectance_AllSensors.ipynb`, `case_intercomparison-Ex3_Indices_AllSensors.ipynb`)
+## Altum and REMX, and cross-sensor agreement (`CaseEx3_Altum-REMX_UncProp.ipynb`, `MeasAgreement_4Sensors.ipynb`)
 
 Folder: `data/case-intercomparison-plot103-full/`
 
 | File | Format |
 |---|---|
-| `Indexes-7_cos_16062026.xlsx` | The full campaign results workbook. Two sheets are used for Plot 103: `Reflectance_103_all` and `Indexes103` (the same naming pattern, `Reflectance_<plot>_all` / `Indexes<plot>`, applies to other plots). |
+| `Indexes-7_cos_16062026.xlsx` | The full campaign results workbook. Two sheets are used for Plot 103: `Reflectance_103_all` and `Indexes103` (the same naming pattern, `Reflectance_<plot>_all` / `Indexes<plot>`, applies to the other plots). |
 
-**`Reflectance_103_all`**, one block of columns per sensor/panel, data
-starting at row 3 (rows 1-2 are headers): columns 1-7 = FLMS (wavelength,
-reflectance, u_random, u_systematic,,, u_combined, U_expanded k=2), 8-14 =
-QEP (same layout), 15-25 = ASD (one wavelength column, then WP1/WP2
-reflectance and uncertainty columns interleaved), 26-36 = SVC (same
-pattern), 37-60 = Altum GP/WP2 and REMX GP/WP2 (6 columns each: wavelength,
+**`Reflectance_103_all`**: one block of columns per sensor/panel, with the data
+starting at row 3 (rows 1-2 are headers). Columns 1-7 = FLMS (wavelength,
+reflectance, u_random, u_systematic, empty, u_combined, U_expanded k=2); 8-14 =
+QEP (same layout); 15-25 = ASD (one wavelength column, then the WP1/WP2
+reflectance and uncertainty columns interleaved); 26-36 = SVC (same
+pattern); 37-60 = Altum GP/WP2 and REMX GP/WP2 (6 columns each: wavelength,
 reflectance, u_panel, u_plot, u_ROI, u_total).
 
-**`Indexes103`**, one row per sensor at fixed row numbers (FLMS=8, QEP=16,
+**`Indexes103`**: one row per sensor at fixed row numbers (FLMS=8, QEP=16,
 ASD_WP1=20, ASD_WP2=21, SVC_WP1=26, SVC_WP2=27, Altum_GP=31, Altum_WP2=32,
 REMX_GP=37, REMX_WP2=38), with index blocks of 7 columns each (point,
 value, u_r, u_s, u_homogeneity, u_c, U_k2) in a fixed order: PRI, NDVI,
 NIRv, EVI, MTCI, OSAVI. Not every sensor has every index (e.g. Altum has no PRI
-or MTCI, REMX has no MTCI), those cells are simply empty.
+or MTCI, and REMX has no MTCI); those cells are empty.
 
-To use your own campaign's data, either reproduce this exact sheet/column
-layout, or edit the `sensors`, `row_map`, and `index_start` dictionaries at
-the top of the notebook to match your own workbook.
+To use your own campaign data, either reproduce this exact sheet and column
+layout, or edit the `sensors`, `row_map` and `index_start` dictionaries in the
+notebooks to match your own workbook.
 
 ---
 
 To adapt any of these notebooks to your own instrument or campaign, keep
-the column names and file naming pattern the same, or edit the file paths
-at the top of the notebook (`DATA_DIR`, `RAW_PATH`, etc.) to match your own
-naming.
+the column names and the file naming pattern, or edit the file paths at the
+top of the notebook (`DATA_DIR`, `RAW_PATH`, etc.) to match your own naming.
