@@ -54,8 +54,8 @@ During the Norway 2025 campaign, the white panel was remeasured before and after
 
 TRY IT YOURSELF:
 
-[`case_asdsvc-Ex1_FieldUncertaintyBudget.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_asdsvc-Ex1_FieldUncertaintyBudget.ipynb)
-builds a simplified uncertainty budget using real ASD FieldSpec 4 measurements from Plot 103.
+[`CaseEx2_ASD-SVC_UncProp.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/CaseEx2_ASD-SVC_UncProp.ipynb)
+builds the uncertainty budget from the raw ASD FieldSpec 4 and SVC HR-1024i measurements of Plot 103.
 
 ## From reflectance to vegetation indices
 
@@ -71,8 +71,8 @@ Using the same vegetation-index formulas for all instruments makes the later cro
 
 TRY IT YOURSELF:
 
-[`case_asdsvc-Ex2_VegetationIndices.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_asdsvc-Ex2_VegetationIndices.ipynb)
-calculates all five vegetation indices from the real Plot 103 reflectance spectrum and propagates their uncertainties using `punpy`.
+The second part of [`CaseEx2_ASD-SVC_UncProp.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/CaseEx2_ASD-SVC_UncProp.ipynb)
+calculates all five vegetation indices from the Plot 103 reflectance spectrum and propagates their uncertainties using `punpy`.
 
 ## Going further
 

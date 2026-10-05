@@ -40,8 +40,7 @@ In contrast to the Piccolo Doppio case, where radiance and irradiance are measur
 This difference becomes particularly important under variable cloud conditions. Rather than assuming that illumination remains stable, the workflow estimates the associated uncertainty directly from repeated field measurements. This makes it possible to quantify the contribution of short-term illumination variability to the overall uncertainty budget and to assess how strongly this contribution depends on the measurement configuration.
 
   TRY IT YOURSELF:
-—> [`case_asdsvc-Ex1_FieldUncertaintyBudget.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_asdsvc-Ex1_FieldUncertaintyBudget.ipynb) - builds the field uncertainty budget using repeated measurements from Plot 103.
-—> [`case_asdsvc-Ex2_VegetationIndices.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_asdsvc-Ex2_VegetationIndices.ipynb) - propagates uncertainty to all five vegetation indices and compares the results with the field campaign values.
+—> [`CaseEx2_ASD-SVC_UncProp.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/CaseEx2_ASD-SVC_UncProp.ipynb) - builds the field uncertainty budget from the raw ASD and SVC measurements of Plot 103, and propagates the uncertainty to the five vegetation indices, which are compared with the field-campaign values.
 
 3. **[UAV sensors (Altum & REMX)](case-uav.md)**
    This example introduces a different measurement approach. Unlike the point based spectroradiometer measurements, the UAV sensors derive reflectance from orthomosaic imagery.
