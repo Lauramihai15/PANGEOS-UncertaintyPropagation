@@ -38,10 +38,8 @@ Each comparison is repeated for both white reference panels used in the
 ground campaign (labelled WP1 and WP2, or GP and WP2, in this training material), since the
 panel itself carries its own calibration uncertainty and is part of what
 could cause two instruments to disagree.
-[Try it yourself](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_intercomparison-Ex2_Reflectance_AllSensors.ipynb)
-with real Plot 103 data — [reflectance](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_intercomparison-Ex2_Reflectance_AllSensors.ipynb)
-and [vegetation indices](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/case_intercomparison-Ex3_Indices_AllSensors.ipynb)
-are covered in two separate notebooks.
+[Try it yourself](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/MeasAgreement_4Sensors.ipynb)
+with real Plot 103 data: the notebook covers both the reflectance and the vegetation indices.
 
 ## Why does each sensor still need its own uncertainty budget first?
 

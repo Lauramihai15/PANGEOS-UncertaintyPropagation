@@ -82,7 +82,7 @@ the same way; only its mean is carried forward.
 TRY IT YOURSELF:
 
 [`CaseEx1_Piccolo_UncProp.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/CaseEx1_Piccolo_UncProp.ipynb)
-walks through the entire chain: lab calibration, ValGEOS validation, field calibration, field measurement, reflectance, plot mean, and the five vegetation indices, using real Plot 103 data, and compares the indices with the campaign values.
+walks through the entire chain: lab calibration, ValGEOS validation, field calibration, field measurement, reflectance, plot mean, and the five vegetation indices, using real Plot 103 data.
 
 ## Vegetation indices
 At each point and at the plot mean level, **NDVI, EVI, OSAVI, MTCI, and PRI**, all five indices from the paper's Table 3, are computed with uncertainty propagated using a correlation matrix sized to the number of
