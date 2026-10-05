@@ -14,6 +14,7 @@ Four cases, each with documentation and runnable notebooks:
 
 **Reference:** Werfeli, M., Antala, M., Abdelmajeed, A.Y.A. et al. Uncertainty propagation and intercomparison of multi-sensor measurements of vegetation stress in sub-optimal conditions. Precision Agric 27, 153 (2026). https://doi.org/10.1007/s11119-026-10455-1
 
+## STEPS REQUIRED PREVIOUS TO PROPAGATION
 ## Building the site locally
 pip install -r docs-requirements.txt
 mkdocs serve
