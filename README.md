@@ -1,4 +1,4 @@
-# PANGEOS Uncertainty Propagation — Case Studies
+# PANGEOS Uncertainty Propagation — Examples of case studies
 
 Worked examples of uncertainty propagation for multi-sensor optical
 measurements under sub-optimal field conditions, extending the [PANGEOS
