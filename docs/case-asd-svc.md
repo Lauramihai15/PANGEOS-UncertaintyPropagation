@@ -2,16 +2,16 @@
 
 The previous training material, [Case 2](https://github.com/pangeos-cost/uq-training/blob/main/notebooks/case_2-Ex1-VI.ipynb), presented a basic case of uncertainty propagation for reflectance factor measurements, using ASD data as an example.
 
-Here, is presented the extended version of **Case 2** going through the full uncertainty propagation workflow for two field spectroradiometers: the **ASD FieldSpec 4** and the **SVC HR-1024i**.
+Here we present the extended version of **Case 2**, going through the full uncertainty propagation workflow for two field spectroradiometers: the **ASD FieldSpec 4** and the **SVC HR-1024i**.
 
 For this purpose, two white reference panels were used during the field measurements:
 
-* **WP2**, with a NIST traceable calibration (calibration certificate with corresponding uncertainties at k=2);
+* **WP2**, with a NIST-traceable calibration (calibration certificate with corresponding uncertainties at k=2);
 * **WP1**, without a traceable calibration certificate.
 
-The measurements were collected during the Norway 2025 field campaign, over the same plots and under the similar sub optimal and variable illumination conditions as the Piccolo Doppio and UAV measurements.
+The measurements were collected during the Norway 2025 field campaign, over the same plots and under similar sub-optimal and variable illumination conditions as the Piccolo Doppio and UAV measurements.
 
-ASD and SVC followed the same field protocol, measuring the same targets and reference panels one after another. The uncertainty propagation approach is therefore similar for the two instruments, while the resulting reflectance values, vegetation indices, and propagated uncertainties are specific for each system.
+ASD and SVC followed the same field protocol, measuring the same targets and reference panels one after another. The uncertainty propagation approach is therefore similar for the two instruments, while the resulting reflectance values, vegetation indices, and propagated uncertainties are specific to each system.
 
 For both devices, the internal calibration and metrological traceability are treated as a **black box**, following *Werfeli, Mihai et al. (2026)*. The uncertainty budget therefore focuses on the quantities that can be evaluated from the field measurements and from the available information on the reference panels.
 
@@ -25,20 +25,20 @@ $$R = \frac{DN_T}{DN_R} \cdot \rho_R \cdot c_{\mathrm{clouds}}$$
 
 where:
 
-* $$\(DN_T\)$$ is the raw signal measured over the target;
-* $$\(DN_R\)$$ is the raw signal measured over the white reference panel;
-* $$\(\rho_R\)$$ is the reflectance scaling factor of the reference panel;
-* $$\(c_{\mathrm{clouds}}\)$$ accounts for changes in illumination caused by variable cloud conditions.
+* $DN_T$ is the raw signal measured over the target;
+* $DN_R$ is the raw signal measured over the white reference panel;
+* $\rho_R$ is the reflectance scaling factor of the reference panel;
+* $c_{\mathrm{clouds}}$ accounts for changes in illumination caused by variable cloud conditions.
 
-The main difference compared with the Piccolo Doppio case is that ASD and SVC do not measure target and reference simultaneously. The measurements are taken one after another, so the illumination can change between the two acquisitions.
+The main difference compared with the Piccolo Doppio case is that ASD and SVC do not measure the target and the reference simultaneously. The measurements are taken one after another, so the illumination can change between the two acquisitions.
 
 To reduce this effect, the white panel signal is interpolated in time to the target acquisition time. The uncertainty introduced by this interpolation is also propagated using the Monte Carlo approach implemented in `punpy`.
 
-The effect of changing cloud conditions is estimated directly from sequential white panel measurements. Panel measurements around the target acquisition are compared over wavelength ranges representative of VNIR, SWIR1, and SWIR2, and the regression residuals are used to estimate the wavelength dependent cloud uncertainty term, \(u(\mathrm{clouds})\).
+The effect of changing cloud conditions is estimated directly from sequential white panel measurements. Panel measurements around the target acquisition are compared over wavelength ranges representative of VNIR, SWIR1, and SWIR2, and the regression residuals are used to estimate the wavelength-dependent cloud uncertainty term, $u(\mathrm{clouds})$.
 
 This contribution is combined with the uncertainty of the reference panel and the plot inhomogeneity using covariance matrices, so that correlations between uncertainty components are retained.
 
-## Best practice tips for field campaign under sub - optimal sky conditions, when using these types of instruments:
+## Best-practice tips for field campaigns under sub-optimal sky conditions when using these types of instruments
 
 * keep the time between white panel and target measurements as short as possible;
 * measure the white panel before and after the target whenever possible;
@@ -50,7 +50,7 @@ This contribution is combined with the uncertainty of the reference panel and th
 * repeat measurements when illumination changes quickly;
 * keep the raw data and all relevant metadata.
 
-During the Norway 2025 campaign, the white panel was remeasured before/after each plot (aprox. at **10 minutes**).
+During the Norway 2025 campaign, the white panel was remeasured before and after each plot (approximately every **10 minutes**).
 
 TRY IT YOURSELF:
 
