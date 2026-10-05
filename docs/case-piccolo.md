@@ -83,6 +83,7 @@ TRY IT YOURSELF:
 
 [`CaseEx1_Piccolo_UncProp.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/CaseEx1_Piccolo_UncProp.ipynb)
 walks through the entire chain: lab calibration, ValGEOS validation, field calibration, field measurement, reflectance, plot mean, and the five vegetation indices, using real Plot 103 data.
+The detector (FLMS or QEP) and the plot are selected at the top of the notebook. The coefficients of each calibration stage are provided; Stages 1-3 are recomputed if you supply your own raw calibration measurements.
 
 ## Vegetation indices
 At each point and at the plot mean level, **NDVI, EVI, OSAVI, MTCI, and PRI**, all five indices from the paper's Table 3, are computed with uncertainty propagated using a correlation matrix sized to the number of

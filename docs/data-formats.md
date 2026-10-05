@@ -5,30 +5,56 @@ where it expects to find them, and in what format, so that you can
 substitute your own measurements and run the same code.
 
 Every notebook loads its data from a folder under `data/`, using a path
-relative to the notebook itself (e.g. `../data/case-piccolo-plot103-full/`). To use
+relative to the notebook itself (e.g. `../data/piccolo-field/`). To use
 your own data, create a similarly structured folder and point the notebook's
 `DATA_DIR` variable (or the file path at the top of the notebook) at it.
 
 ## Piccolo Doppio (`CaseEx1_Piccolo_UncProp.ipynb`)
 
-Folder: `data/case-piccolo-plot103-full/`
+Settings at the top of the notebook: `SENSOR` (`"FLMS"` or `"QEP"`), `PLOT_ID` (any plot of the campaign), `N_POINTS`
+(measurement points per plot), the relative cosine-response uncertainty of each group of plots (`COS_GROUPS`) and the three
+folders described below.
 
-Plain-text `.txt` files, one value or one column of repeat measurements per
-file, named `<detector>_<quantity>_<stage>.txt` (detector = `FLMS` or
-`QEP`). The following are required for **each of the calibration stages**:
+### Field measurements: `data/piccolo-field/`
 
-| Stage | Files needed (per detector) |
+Plain-text `.txt` files, for the points `p1`…`p5` of each plot:
+
+| File | Format |
 |---|---|
-| Laboratory calibration | `{det}_L_lg_ITCorr_LabCal2023.txt`, `{det}_L_dk_ITCorr_LabCal2023.txt`, `{det}_L_IT_Lab2023.txt` (and the same three for `_E_`), `RadianceStd_{det}_Lab2023.txt`, `IrradianceStd_{det}_Lab2023.txt`, `coeffsNonlin_{det}_Lab2023.txt`, `u_{det}_L_std_abs_Lab2023.txt`, `u_{det}_E_std_abs_Lab2023.txt`, `u_{det}_nonlin_residual_Lab2023.txt` |
-| Laboratory validation (ValGEOS) | `{det}_L_lg_ITCorr_LabVal2023.txt`, `{det}_L_dk_ITCorr_LabVal2023.txt`, `{det}_L_IT_ValLab2023.txt` (and the `_E_` equivalents) |
-| Field calibration coefficients | `{det}_L_Wavelength_Val2025.txt`, `{det}_E_Wavelength_Val2025.txt`, `{det}_L_lg_ITCorr_FieldVal2025.txt`, `{det}_L_dk_ITCorr_FieldVal2025.txt`, `{det}_L_IT_Val2025.txt` (and the `_E_` equivalents) |
-| Field measurement, per point | For each point `p1`…`p5`: `{det}_L_lg_ITCorr_Field2025_{plot}p{n}.txt`, `{det}_L_dk_ITCorr_Field2025_{plot}p{n}.txt`, `{det}_L_IT_Field2025_{plot}p{n}.txt` (and the `_E_` equivalents) |
+| `<det>_<L or E>_lg_ITCorr_Field2025_<plot>p<n>.txt`, `<det>_<L or E>_dk_ITCorr_Field2025_<plot>p<n>.txt` | Light (`lg`) and dark (`dk`) scans of the radiance (`L`) or irradiance (`E`) channel: one row per wavelength, one column per repeat scan. |
+| `<det>_<L or E>_IT_Field2025_<plot>p<n>.txt` | Integration time: a single number. |
+| `<det>_<L or E>_Wavelength_Val2025.txt` | Wavelength grid of the field measurements. |
 
-Each `_lg_`/`_dk_` file is a repeat-measurement matrix: one row per
-wavelength, one column per repeat scan. `_IT_` files contain a single number
-(the integration time). `RadianceStd`/`IrradianceStd` are the known values of your
-laboratory reference standard, one per wavelength. `coeffsNonlin` contains the
-coefficients of the detector's non-linearity correction polynomial.
+The detector `<det>` is `FLMS` or `QEP`.
+
+### Calibration coefficients: `data/piccolo-coefficients/`
+
+The coefficients of each calibration stage with their uncertainties, per detector:
+
+| File | Content |
+|---|---|
+| `<det>_Stage1_LabCalCoeffs_L.txt`, `<det>_Stage1_LabCalCoeffs_E.txt` | Stage 1, laboratory calibration coefficients. Three columns: value, random uncertainty, systematic uncertainty; one row per wavelength. |
+| `<det>_Stage2_ValGEOS_L.txt`, `<det>_Stage2_ValGEOS_E.txt` | Stage 2, validated radiance and irradiance (ValGEOS). Same format. |
+| `<det>_Stage3_FieldCalCoeffs_L.txt`, `<det>_Stage3_FieldCalCoeffs_E.txt` | Stage 3, field calibration coefficients. Same format. |
+| `<det>_NonlinPolynomial.txt` | Coefficients of the detector non-linearity correction polynomial. |
+| `<det>_NonlinResidual_u_rel.txt` | Relative systematic uncertainty (%) of the non-linearity correction, one value per wavelength. |
+| `<det>_<L or E>_Wavelength_Lab2023.txt`, `<det>_<L or E>_Wavelength_ValLab2023.txt` | Wavelength grids of the laboratory measurements (used for the plots). |
+
+### Raw calibration measurements (optional, not part of the repository)
+
+If the folder `data/piccolo-calibration-raw/` exists, the notebook computes Stages 1-3 from the raw calibration
+measurements instead of reading the coefficients. With `SAVE_COEFFICIENTS = True` it then writes the coefficients to
+`data/piccolo-coefficients/`. The folder must contain, per detector:
+
+| Stage | Files needed |
+|---|---|
+| Laboratory calibration | `<det>_<L or E>_lg_ITCorr_LabCal2023.txt`, `<det>_<L or E>_dk_ITCorr_LabCal2023.txt`, `<det>_<L or E>_IT_Lab2023.txt`, `RadianceStd_<det>_Lab2023.txt`, `IrradianceStd_<det>_Lab2023.txt`, `coeffsNonlin_<det>_Lab2023.txt`, `u_<det>_L_std_abs_Lab2023.txt`, `u_<det>_E_std_abs_Lab2023.txt`, `u_<det>_nonlin_residual_Lab2023.txt` |
+| Laboratory validation (ValGEOS) | `<det>_<L or E>_lg_ITCorr_LabVal2023.txt`, `<det>_<L or E>_dk_ITCorr_LabVal2023.txt`, `<det>_<L or E>_IT_ValLab2023.txt` |
+| Field calibration | `<det>_<L or E>_lg_ITCorr_FieldVal2025.txt`, `<det>_<L or E>_dk_ITCorr_FieldVal2025.txt`, `<det>_<L or E>_IT_Val2025.txt` |
+
+The `_lg_`/`_dk_` files are repeat-measurement matrices (one row per wavelength, one column per repeat scan), the `_IT_`
+files contain the integration time, `RadianceStd`/`IrradianceStd` are the known values of your laboratory reference standard (one per
+wavelength), and `coeffsNonlin` contains the non-linearity correction polynomial coefficients.
 
 ## ASD FieldSpec 4 and SVC HR-1024i (`CaseEx2_ASD-SVC_UncProp.ipynb`)
 
@@ -67,7 +93,7 @@ value, u_r, u_s, u_homogeneity, u_c, U_k2) in a fixed order: PRI, NDVI,
 NIRv, EVI, MTCI, OSAVI. Not every sensor has every index (e.g. Altum has no PRI
 or MTCI, and REMX has no MTCI); those cells are empty.
 
-To use your own campaign data, either reproduce this exact sheet and column
+The plot is selected with the variable `PLOT_ID` at the top of the notebooks. To use your own campaign data, either reproduce this exact sheet and column
 layout, or edit the `sensors`, `row_map` and `index_start` dictionaries in the
 notebooks to match your own workbook.
 
