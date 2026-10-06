@@ -14,7 +14,7 @@ The main question addressed in this training material is:
 
 This course material is based on work carried out by PANGEOS Working Groups 1, 2, and 4 during the PANGEOS “Joint WG1–WG2 Field Day: Remote Sensing & Proximal Phenotyping”, held in Norway on June 19–20, 2025. The methodology, measurements, and examples presented here build on the activities carried out during this field campaign and are also described in a recent PANGEOS publication (see the reference at the bottom of this page).
 
-Note: This training material is designed to be reused with your own data.
+> **Note:** This training material is designed to be reused with your own data.
 Every notebook in this section uses real data from the 2025 Norway campaign so that the workflow is concrete and easy to follow. However, the code has been written as a general-purpose template and can be adapted to your own measurements, provided that your input data follow the required format.
 This applies especially to the Piccolo Doppio case. The same uncertainty-propagation approach can be used for other dual-fibre spectrometer systems based on Ocean Insight QE-series detectors, using, for example, a cosine diffuser for irradiance measurements and a collimator or bare fibre for radiance measurements. This includes FLOX and similar custom dual-optic systems, not only the specific Piccolo Doppio configuration used in this campaign.
 
