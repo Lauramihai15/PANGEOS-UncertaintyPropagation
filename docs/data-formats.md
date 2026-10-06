@@ -30,8 +30,7 @@ The detector `<det>` is `FLMS` or `QEP`.
 ### Calibration coefficients: `data/piccolo-coefficients/`
 
 The field calibration coefficients (the result of the last calibration step) with their propagated uncertainties, and the
-detector non-linearity coefficients, per detector. If the calibration was not validated in the field, use the coefficients and uncertainties
-received from the laboratory that performed the calibration, in the same format:
+detector non-linearity coefficients, per detector:
 
 | File | Content |
 |---|---|
@@ -63,7 +62,7 @@ Folder: `data/campaign-workbook/`
 
 | File | Format |
 |---|---|
-| `Indexes-7_cos_16062026.xlsx` | The full campaign results workbook. Two sheets are used for Plot 103: `Reflectance_103_all` and `Indexes103` (the same naming pattern, `Reflectance_<plot>_all` / `Indexes<plot>`, applies to the other plots). |
+| `Indexes-7_cos_16062026.xlsx` | The full campaign results workbook. Two sheets are used for a plot, here Plot 103: `Reflectance_103_all` and `Indexes103` (the same naming pattern, `Reflectance_<plot>_all` / `Indexes<plot>`, applies to the other plots). |
 
 **`Reflectance_103_all`**: one block of columns per sensor/panel, with the data
 starting at row 3 (rows 1-2 are headers). Columns 1-7 = FLMS (wavelength,

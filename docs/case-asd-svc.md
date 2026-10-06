@@ -72,7 +72,7 @@ Using the same vegetation-index formulas for all instruments makes the later cro
 TRY IT YOURSELF:
 
 The second part of [`CaseEx2_ASD-SVC_UncProp.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/CaseEx2_ASD-SVC_UncProp.ipynb)
-calculates all five vegetation indices from the Plot 103 reflectance spectrum and propagates their uncertainties using `punpy`.
+calculates all five vegetation indices from the reflectance spectrum of the selected plot (Plot 103 by default) and propagates their uncertainties using `punpy`.
 
 ## Going further
 

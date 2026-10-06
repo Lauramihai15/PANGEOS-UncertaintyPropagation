@@ -3,7 +3,7 @@
 The [Case 1](https://github.com/pangeos-cost/uq-training/blob/main/notebooks/case_1-Ex0-Piccolo.ipynb)
 notebooks teach the basics of uncertainty propagation for the Piccolo Doppio system using one clean, minimal example. This case study extends this case, using the same approach, to the full 2025 Norway field campaign: 12 wheat plots measured around solar noon under sub-optimal, variable cloud illumination. The same ideas are applied at full scale: two detectors (FLMS and QEP, from Ocean Insight, USA), a calibration chain, and five vegetation indices, all with random and systematic uncertainty tracked separately and propagated with `punpy` (CoMet toolkit).
 
-This page focuses on what each stage produces and how uncertainty flows to the next. The complete implementation, including the calibration chain itself, is available as a runnable notebook below, for readers who want to reproduce every step on their own data.
+This page focuses on what each stage produces and how uncertainty flows to the next. The runnable notebook below starts from the field calibration coefficients, which are the result of the calibration chain, and processes the field measurements of any plot of the campaign up to the vegetation indices, for readers who want to reproduce these steps on their own data.
 
 > **Note:** This example can be applied to any similar device.
 > The Piccolo Doppio system is one example of a broader instrument class:
@@ -18,20 +18,17 @@ This page focuses on what each stage produces and how uncertainty flows to the n
 
 A spectrometer's raw output is not a physical quantity; it is a digital number (DN) that depends on the specific detector, its exposure time, its temperature, and how much it has drifted since it was last checked against a known reference (a standard). Before anything scientifically meaningful (radiance, irradiance, reflectance) can be computed, the DNs have to be traced back to a physical unit through an unbroken chain of comparisons against reference standards. This is what traceability means.
 
-In this pipeline, that traceability chain has three links, each one relinking the calibration closer to the actual conditions in which the measurement was performed:
+In this pipeline, that traceability chain has three stages, each one relinking the calibration closer to the actual conditions in which the measurement was performed:
 
 1. **Laboratory calibration** — the detector's raw response is related to a radiance/irradiance standard under controlled laboratory conditions.
 2. **Laboratory validation against a transfer standard (ValGEOS)** — the laboratory calibration is checked against an independent, NIST-traceable transfer standard, confirming that it is trustworthy before it leaves the lab.
 3. **Field calibration** — the validated calibration is relinked using a field validation measurement, to account for whatever has changed (temperature, transport, time elapsed) between the lab and the actual field campaign. 
 
-Skipping any of these steps would mean trusting that nothing changed between one context and the next, exactly the kind of unquantified assumption this whole training module exists to avoid.
-
-> **Note:** If no field system is available to validate the calibration, the procedure is practically the same: the calibration
-> coefficients received from the laboratory that performed the calibration are used, together with their uncertainties.
+Skipping any of these stages would mean trusting that nothing changed between one context and the next, exactly the kind of unquantified assumption this whole training module exists to avoid.
 
 ## Outputs of the traceability chain
 
-Each of the three calibration steps outputs, per detector (FLMS and QEP) and per wavelength:
+Each of the three calibration stages outputs, per detector (FLMS and QEP) and per wavelength:
 - a **calibrated value** (a calibration coefficient, or a validated radiance/irradiance), and
 - its **uncertainty, already split into a random component and a systematic component**, not a single combined number. The uncertainties from each previous step are propagated to the next one, so that at the end we obtain the required results with the total propagated uncertainty for the entire chain.
 
@@ -85,16 +82,12 @@ the same way; only its mean is carried forward.
 TRY IT YOURSELF:
 
 [`CaseEx1_Piccolo_UncProp.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/CaseEx1_Piccolo_UncProp.ipynb)
-starts from the field calibration coefficients (with their propagated random and systematic uncertainties), applies them to the raw field measurements to obtain the radiance and irradiance, and continues with the reflectance, the plot mean and the five vegetation indices, using real Plot 103 data.
+starts from the field calibration coefficients (with their propagated random and systematic uncertainties), applies them to the raw field measurements to obtain the radiance and irradiance, and continues with the reflectance, the plot mean and the five vegetation indices, using real data (Plot 103 by default).
 The detector (FLMS or QEP) and the plot are selected at the top of the notebook.
 
 ## Vegetation indices
-At each point and at the plot mean level, **NDVI, EVI, OSAVI, MTCI, and PRI**, all five indices from the paper's Table 3, are computed with uncertainty propagated using a correlation matrix sized to the number of
+At each point, **NDVI, EVI, OSAVI, MTCI, and PRI**, all five indices from the paper's Table 3, are computed with uncertainty propagated using a correlation matrix sized to the number of
 reflectance bands each index depends on (2 bands or 3 bands), reflecting that those bands share correlated systematic errors from the same calibration chain.
 
-## Running across the full campaign
-The full run loops over all 12 plots, both detectors, and both cosine correction settings, saving every intermediate and final product as CSV, organised per sensor and per plot.
-
-## NEXT STEPS 
-- The complete calibration-to-indices pipeline is available as a runnable notebook; see "TRY IT YOURSELF" above.
-- A Case 2b notebook covering the vegetation-index correlation-matrix handling for the full 12-plot campaign (not just one plot) has not been started yet.
+## Running for other plots and detectors
+The notebook processes one plot and one detector at a time. The plot (`PLOT_ID`) and the detector (`SENSOR`, FLMS or QEP) are selected at the top of the notebook; the same code runs for all 12 plots and for both detectors.

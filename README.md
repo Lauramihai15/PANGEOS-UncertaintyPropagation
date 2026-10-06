@@ -7,7 +7,7 @@ with real 2025 Norway field-campaign data.
 
 Four notebooks, each with its documentation page:
 
-- `CaseEx1_Piccolo_UncProp.ipynb` — Piccolo Doppio (FLMS): full pipeline from raw signal to reflectance and vegetation indices
+- `CaseEx1_Piccolo_UncProp.ipynb` — Piccolo Doppio (FLMS, QEP): from the field calibration coefficients and the raw field signal to reflectance and vegetation indices
 - `CaseEx2_ASD-SVC_UncProp.ipynb` — ASD FieldSpec 4 and SVC HR-1024i: reflectance and vegetation indices
 - `CaseEx3_Altum-REMX_UncProp.ipynb` — UAV sensors (Altum and REMX): uncertainty budget and vegetation indices
 - `MeasAgreement_4Sensors.ipynb` — cross-sensor measurement agreement (E<sub>N</sub>)

@@ -29,7 +29,7 @@ The workflow is applied to measurements collected under sub-optimal illumination
 
 TRY IT YOURSELF:
 You can apply the same workflow to your own data using the notebook
-—> [CaseEx1_Piccolo_UncProp.ipynb](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/CaseEx1_Piccolo_UncProp.ipynb). The provided example uses real field measurements from Plot 103 of the Norway 2025 campaign.
+—> [CaseEx1_Piccolo_UncProp.ipynb](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/CaseEx1_Piccolo_UncProp.ipynb). The provided example uses real field measurements from the Norway 2025 campaign (Plot 103 by default; any plot can be selected).
 
 2. **[ASD FieldSpec 4 & SVC HR-1024i](case-asd-svc.md)** — extended example of [Case 2](https://github.com/pangeos-cost/uq-training/blob/main/notebooks/case_2-Ex1-VI.ipynb).
    This example demonstrates how uncertainty is propagated from reflectance measurements to vegetation indices for two types of field spectroradiometers (ASD FieldSpec 4 & SVC HR-1024i) that use the white reference panel ratio method.
@@ -38,14 +38,14 @@ In contrast to the Piccolo Doppio case, where radiance and irradiance are measur
 This difference becomes particularly important under variable cloud conditions. Rather than assuming that illumination remains stable, the workflow estimates the associated uncertainty directly from repeated field measurements. This makes it possible to quantify the contribution of short-term illumination variability to the overall uncertainty budget and to assess how strongly this contribution depends on the measurement configuration.
 
   TRY IT YOURSELF:
-—> [`CaseEx2_ASD-SVC_UncProp.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/CaseEx2_ASD-SVC_UncProp.ipynb) - builds the field uncertainty budget from the raw ASD and SVC measurements of Plot 103, and propagates the uncertainty to the five vegetation indices.
+—> [`CaseEx2_ASD-SVC_UncProp.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/CaseEx2_ASD-SVC_UncProp.ipynb) - builds the field uncertainty budget from the raw ASD and SVC measurements of a selected plot (Plot 103 by default), and propagates the uncertainty to the five vegetation indices.
 
 3. **[UAV sensors (Altum & REMX)](case-uav.md)**
    This example introduces a different measurement approach. Unlike the point based spectroradiometer measurements, the UAV sensors derive reflectance from orthomosaic imagery.
 Two independent reflectance calibration methods are compared, allowing us to investigate how calibration choices influence the resulting reflectance values and their associated uncertainties. The example also illustrates the importance of flight timing and changing illumination conditions, which can become major contributors to the uncertainty budget when measurements are acquired under variable cloud cover.
 
   TRY IT YOURSELF:
-—> [`CaseEx3_Altum-REMX_UncProp.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/CaseEx3_Altum-REMX_UncProp.ipynb) - compares the two calibration approaches (differences of approximately 15-28% in several spectral bands) and derives the vegetation indices from the calibrated UAV data.
+—> [`CaseEx3_Altum-REMX_UncProp.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/CaseEx3_Altum-REMX_UncProp.ipynb) - compares the two calibration approaches (differences of approximately 7-28% between the bands) and derives the vegetation indices from the calibrated UAV data.
   
 4. **[Cross-sensor intercomparison](case-intercomparison.md)** —
 This final example brings the previous measurement approaches together and asks a broader question: when measurements come from different sensors, how can we determine whether their results agree within their respective uncertainties?
@@ -54,7 +54,7 @@ The case study shows which sensor comparisons were performed and how variable cl
 It also highlights an important principle: **a meaningful intercomparison is only possible when the uncertainty budget of each individual measurement system has first been evaluated properly.**
 
   TRY IT YOURSELF:
-—> [`MeasAgreement_4Sensors.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/MeasAgreement_4Sensors.ipynb) — compares Piccolo FLMS against all other sensors for Plot 103, for the reflectance and for the five vegetation indices.
+—> [`MeasAgreement_4Sensors.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/MeasAgreement_4Sensors.ipynb) — compares Piccolo FLMS against all other sensors for a selected plot (Plot 103 by default), for the reflectance and for the five vegetation indices.
 
 
 ## START HERE IF YOU HAVE COMPLETED BASIC CASES 1 AND 2

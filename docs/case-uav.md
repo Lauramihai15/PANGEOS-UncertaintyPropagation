@@ -83,7 +83,7 @@ method are.
 TRY IT YOURSELF:
 
 [`CaseEx3_Altum-REMX_UncProp.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/CaseEx3_Altum-REMX_UncProp.ipynb)
-uses real Plot 103 results to compare the grey-panel and white-panel methods directly and
+uses real results (Plot 103 by default; the plot is selected with `PLOT_ID`) to compare the grey-panel and white-panel methods directly and
 combines the three uncertainty components into the combined uncertainty.
 
 ## Vegetation indices
@@ -108,7 +108,7 @@ in quadrature (Eq. 5 of the paper).
 TRY IT YOURSELF:
 
 The second part of [`CaseEx3_Altum-REMX_UncProp.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/CaseEx3_Altum-REMX_UncProp.ipynb)
-computes NDVI/OSAVI/EVI (and PRI for REMX) from the real Plot 103 reflectance.
+computes NDVI/OSAVI/EVI (and PRI for REMX) from the real reflectance of the selected plot.
 
 ## Going further
 

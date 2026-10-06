@@ -39,7 +39,7 @@ ground campaign (labelled WP1 and WP2, or GP and WP2, in this training material)
 panel itself carries its own calibration uncertainty and is part of what
 could cause two instruments to disagree.
 [Try it yourself](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/MeasAgreement_4Sensors.ipynb)
-with real Plot 103 data: the notebook covers both the reflectance and the vegetation indices.
+with real data (Plot 103 by default; the plot is selected with `PLOT_ID`): the notebook covers both the reflectance and the vegetation indices.
 
 ## Why does each sensor still need its own uncertainty budget first?
 
