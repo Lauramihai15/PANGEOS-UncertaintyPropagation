@@ -49,7 +49,7 @@ treated as a **method-dependent uncertainty component**, on top of the
 within-ROI spatial variability. This mirrors the same instinct behind
 comparing ASD and SVC in the other case: when two independent ways of doing
 the same thing agree, that is evidence the number is trustworthy; when they
-disagree, the size of that disagreement becomes part of the honest
+disagree, the size of that disagreement becomes part of the
 uncertainty budget rather than being hidden by picking one method silently.
 
 ## Combined uncertainty components
