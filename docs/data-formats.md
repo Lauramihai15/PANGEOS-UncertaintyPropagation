@@ -12,7 +12,7 @@ your own data, create a similarly structured folder and point the notebook's
 ## Piccolo Doppio (`CaseEx1_Piccolo_UncProp.ipynb`)
 
 Settings at the top of the notebook: `SENSOR` (`"FLMS"` or `"QEP"`), `PLOT_ID` (any plot of the campaign), `N_POINTS`
-(measurement points per plot), the relative cosine-response uncertainty of each group of plots (`COS_GROUPS`) and the three
+(measurement points per plot), the relative cosine-response uncertainty of each group of plots (`COS_GROUPS`) and the two
 folders described below.
 
 ### Field measurements: `data/piccolo-field/`
@@ -29,32 +29,14 @@ The detector `<det>` is `FLMS` or `QEP`.
 
 ### Calibration coefficients: `data/piccolo-coefficients/`
 
-The coefficients of each calibration stage with their uncertainties, per detector:
+The field calibration coefficients (the result of the last calibration step) with their propagated uncertainties, and the
+detector non-linearity coefficients, per detector:
 
 | File | Content |
 |---|---|
-| `<det>_Stage1_LabCalCoeffs_L.txt`, `<det>_Stage1_LabCalCoeffs_E.txt` | Stage 1, laboratory calibration coefficients. Three columns: value, random uncertainty, systematic uncertainty; one row per wavelength. |
-| `<det>_Stage2_ValGEOS_L.txt`, `<det>_Stage2_ValGEOS_E.txt` | Stage 2, validated radiance and irradiance (ValGEOS). Same format. |
-| `<det>_Stage3_FieldCalCoeffs_L.txt`, `<det>_Stage3_FieldCalCoeffs_E.txt` | Stage 3, field calibration coefficients. Same format. |
+| `<det>_FieldCalCoeffs_L.txt`, `<det>_FieldCalCoeffs_E.txt` | Field calibration coefficients of the radiance and irradiance channels. Three columns: value, random uncertainty, systematic uncertainty; one row per wavelength. |
 | `<det>_NonlinPolynomial.txt` | Coefficients of the detector non-linearity correction polynomial. |
 | `<det>_NonlinResidual_u_rel.txt` | Relative systematic uncertainty (%) of the non-linearity correction, one value per wavelength. |
-| `<det>_<L or E>_Wavelength_Lab2023.txt`, `<det>_<L or E>_Wavelength_ValLab2023.txt` | Wavelength grids of the laboratory measurements (used for the plots). |
-
-### Raw calibration measurements (optional, not part of the repository)
-
-If the folder `data/piccolo-calibration-raw/` exists, the notebook computes Stages 1-3 from the raw calibration
-measurements instead of reading the coefficients. With `SAVE_COEFFICIENTS = True` it then writes the coefficients to
-`data/piccolo-coefficients/`. The folder must contain, per detector:
-
-| Stage | Files needed |
-|---|---|
-| Laboratory calibration | `<det>_<L or E>_lg_ITCorr_LabCal2023.txt`, `<det>_<L or E>_dk_ITCorr_LabCal2023.txt`, `<det>_<L or E>_IT_Lab2023.txt`, `RadianceStd_<det>_Lab2023.txt`, `IrradianceStd_<det>_Lab2023.txt`, `coeffsNonlin_<det>_Lab2023.txt`, `u_<det>_L_std_abs_Lab2023.txt`, `u_<det>_E_std_abs_Lab2023.txt`, `u_<det>_nonlin_residual_Lab2023.txt` |
-| Laboratory validation (ValGEOS) | `<det>_<L or E>_lg_ITCorr_LabVal2023.txt`, `<det>_<L or E>_dk_ITCorr_LabVal2023.txt`, `<det>_<L or E>_IT_ValLab2023.txt` |
-| Field calibration | `<det>_<L or E>_lg_ITCorr_FieldVal2025.txt`, `<det>_<L or E>_dk_ITCorr_FieldVal2025.txt`, `<det>_<L or E>_IT_Val2025.txt` |
-
-The `_lg_`/`_dk_` files are repeat-measurement matrices (one row per wavelength, one column per repeat scan), the `_IT_`
-files contain the integration time, `RadianceStd`/`IrradianceStd` are the known values of your laboratory reference standard (one per
-wavelength), and `coeffsNonlin` contains the non-linearity correction polynomial coefficients.
 
 ## ASD FieldSpec 4 and SVC HR-1024i (`CaseEx2_ASD-SVC_UncProp.ipynb`)
 
