@@ -31,10 +31,14 @@ uncertainty budget.
 
 ## The method: orthomosaic + panel calibration, compared two ways
 
-Each flight (30 m above ground level, 80% front/side overlap) is processed
-into an orthomosaic reflectance map through the standard photogrammetry
-pipeline: keypoint extraction and bundle adjustment, georeferencing against
-ground control points, and generation of the final reflectance orthomosaic.
+The cameras were flown on a DJI Matrice 210 V2 RTK, together with a Downwelling
+Light Sensor 2 (DLS2), in two flights at 30 m above ground level (ground
+sampling distance 1.94 cm, 80% front and side overlap). Four ground control
+points were deployed around the field. Each flight is processed with
+Pix4Dmapper 4.9.0 into an orthomosaic reflectance map through the standard
+workflow: keypoint extraction and bundle adjustment, georeferencing against the
+ground control points, and generation of the digital surface model, the
+orthomosaic and the reflectance products.
 
 Radiometric calibration, which converts the camera's raw digital numbers to
 reflectance, is done in **two different ways for the same imagery**, and both
@@ -96,6 +100,10 @@ Where an index needs a wavelength that the camera does not have, the nearest
 available band is used instead, and the resulting spectral mismatch is
 treated as an additional, acknowledged source of uncertainty for that
 index, not silently absorbed into the result.
+
+The uncertainty of the indices is propagated with a first-order Taylor expansion
+for each of the two reference panels (GP and WP2), and the two results are combined
+in quadrature (Eq. 5 of the paper).
 
 TRY IT YOURSELF:
 
