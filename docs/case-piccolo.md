@@ -91,12 +91,12 @@ The detector (FLMS or QEP) and the plot are selected at the top of the notebook.
 
 The notebook is organised in the following steps:
 
-1. Import the Python packages and set the parameters (detector, plot, folders)
+1. Import the relevant Python packages needed in this notebook
 2. Measurement functions
 3. Load and plot the calibration coefficients
-4. Field measurements, per point: conversion from DN to radiance and irradiance (SI units), and reflectance
-5. Plot-level mean over the points
-6. Vegetation indices, per point
+4. Field measurements, per point: conversion from DN to radiance and irradiance (SI units), reflectance with the propagation of related uncertainties
+5. Plot-level mean over the 5 points
+6. Vegetation indices, per point with the propagation of related uncertainties
 
 ## Vegetation indices
 At each point, **NDVI, EVI, OSAVI, MTCI, and PRI**, all five indices from the paper's Table 3, are computed with uncertainty propagated using a correlation matrix sized to the number of
