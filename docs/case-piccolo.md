@@ -28,7 +28,7 @@ The chain of the Piccolo Doppio follows the traceability diagram below (left sid
 - **Reflectance (L2):** R = &pi; L / E, with u_r(R) and u_s(R).
 - **Vegetation indices (L3):** NDVI, EVI, OSAVI, MTCI and PRI, with u_r(VI) and u_s(VI).
 
-The laboratory and field calibration were carried out completely and their uncertainties are propagated into the calibration coefficients. These steps are not presented in this material: users generally receive from the laboratory that performed the calibration only the calibration coefficients and their uncertainties, and these are the input of the notebook. If no field system is available to validate the calibration, the procedure is practically the same: the calibration coefficients received from the laboratory are used, together with their uncertainties.
+The Piccolo Doppio was calibrated in the laboratory and in the field, and the uncertainty of each calibration step is propagated into the final calibration coefficients. The calibration procedure itself is not repeated in this material: users normally receive from the calibrating laboratory only the calibration coefficients and their uncertainties, which are the input of the notebook. The procedure is the same when no field system is available to validate the calibration: the coefficients provided by the laboratory are used together with their uncertainties.
 
 ## Outputs of the traceability chain
 
