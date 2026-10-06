@@ -12,8 +12,6 @@ Four notebooks, each with its documentation page:
 - `CaseEx3_Altum-REMX_UncProp.ipynb` — UAV sensors (Altum and REMX): uncertainty budget and vegetation indices
 - `MeasAgreement_4Sensors.ipynb` — cross-sensor measurement agreement (E<sub>N</sub>)
 
-**Reference:** Werfeli, M., Antala, M., Abdelmajeed, A.Y.A. et al. Uncertainty propagation and intercomparison of multi-sensor measurements of vegetation stress in sub-optimal conditions. Precision Agric 27, 153 (2026). https://doi.org/10.1007/s11119-026-10455-1
-
 ## Building the site locally
 
 ```bash
@@ -38,3 +36,5 @@ Each notebook loads its own input data from the `data/` folder. See the
 MIT — see [LICENSE](LICENSE). This repository builds on code and course
 material from [pangeos-cost/uq-training](https://github.com/pangeos-cost/uq-training),
 also MIT-licensed.
+
+**Reference:** Werfeli, M., Antala, M., Abdelmajeed, A.Y.A. et al. Uncertainty propagation and intercomparison of multi-sensor measurements of vegetation stress in sub-optimal conditions. Precision Agric 27, 153 (2026). https://doi.org/10.1007/s11119-026-10455-1

@@ -14,7 +14,7 @@ all five instruments, converging on that question.
 
 <img src="images/sensor-fleet-full-traceability.png" alt="Complete traceability and uncertainty propagation diagram for the five optical sensors" width="100%"/> 
 
-> **Note:** Findings referenced throughout are from Werfeli, M., Antala, M., Abdelmajeed, A.Y.A., Sánchez-Virosta, Á., Halem, Z., Merrington, A., El-Mejjaouy, Y., Petrovic, B., Hueni, A., Bouras, E.H., Kefauver, S.C., Shafiee, S., Rastogi, A., Mihai, L. (2026). *Uncertainty propagation and intercomparison of multi-sensor measurements of vegetation stress in sub-optimal conditions.* Precision Agric 27, 153. https://doi.org/10.1007/s11119-026-10455-1
+> **Note:** Findings referenced throughout are from the paper cited at the bottom of this page.
 
 > **Note:** This material can be applied to any similar devices.
     The E<sub>N</sub>-ratio comparison method shown here applies to **any
@@ -92,3 +92,5 @@ with.
 - [Case: Piccolo Doppio](case-piccolo.md), [Case: ASD & SVC](case-asd-svc.md),
   [Case: UAV sensors](case-uav.md) — the three uncertainty budgets that feed
   into every comparison on this page.
+
+**Reference:** Werfeli, M., Antala, M., Abdelmajeed, A.Y.A., Sánchez-Virosta, Á., Halem, Z., Merrington, A., El-Mejjaouy, Y., Petrovic, B., Hueni, A., Bouras, E.H., Kefauver, S.C., Shafiee, S., Rastogi, A., Mihai, L. (2026). *Uncertainty propagation and intercomparison of multi-sensor measurements of vegetation stress in sub-optimal conditions.* Precision Agric 27, 153. https://doi.org/10.1007/s11119-026-10455-1

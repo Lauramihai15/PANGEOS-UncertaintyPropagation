@@ -12,9 +12,7 @@ The main question addressed in this training material is:
 **How can we propagate measurement uncertainty for different types of optical sensors so that we can assess the reliability of the results and meaningfully compare measurements from different sensors, even when field conditions are not ideal?**
 
 
-This course material is based on work carried out by PANGEOS Working Groups 1, 2, and 4 during the PANGEOS “Joint WG1–WG2 Field Day: Remote Sensing & Proximal Phenotyping”, held in Norway on June 19–20, 2025. The methodology, measurements, and examples presented here build on the activities carried out during this field campaign and are also described in a recent PANGEOS publication:
-
-"Werfeli, M., Antala, M., Abdelmajeed, A.Y.A., Sánchez-Virosta, Á., Halem, Z., Merrington, A., El-Mejjaouy, Y., Petrovic, B., Hueni, A., Bouras, E.H., Kefauver, S.C., Shafiee, S., Rastogi, A., Mihai, L. (2026). *Uncertainty propagation and intercomparison of multi-sensor measurements of vegetation stress in sub-optimal conditions.* Precision Agric 27, 153. https://doi.org/10.1007/s11119-026-10455-1"
+This course material is based on work carried out by PANGEOS Working Groups 1, 2, and 4 during the PANGEOS “Joint WG1–WG2 Field Day: Remote Sensing & Proximal Phenotyping”, held in Norway on June 19–20, 2025. The methodology, measurements, and examples presented here build on the activities carried out during this field campaign and are also described in a recent PANGEOS publication (see the reference at the bottom of this page).
 
 Note: This training material is designed to be reused with your own data.
 Every notebook in this section uses real data from the 2025 Norway campaign so that the workflow is concrete and easy to follow. However, the code has been written as a general-purpose template and can be adapted to your own measurements, provided that your input data follow the required format.
@@ -67,3 +65,5 @@ If you have not yet tested the basic example, you can test it here:
 [Case 1](https://github.com/pangeos-cost/uq-training/blob/main/notebooks/case_1-Ex0-Piccolo.ipynb).
 
 **Authors:** Laura Mihai. See [Contributors](contributors.md) for details on the contributors who developed the underlying research code on which each case study is based.
+
+**Reference:** Werfeli, M., Antala, M., Abdelmajeed, A.Y.A., Sánchez-Virosta, Á., Halem, Z., Merrington, A., El-Mejjaouy, Y., Petrovic, B., Hueni, A., Bouras, E.H., Kefauver, S.C., Shafiee, S., Rastogi, A., Mihai, L. (2026). *Uncertainty propagation and intercomparison of multi-sensor measurements of vegetation stress in sub-optimal conditions.* Precision Agric 27, 153. https://doi.org/10.1007/s11119-026-10455-1
