@@ -1,16 +1,17 @@
 # Contributors
 
 The [case studies](index.md) in this section adapt real research code into
-training material. This page credits who wrote the underlying code on which each
-case is based, separately from who prepared and maintains the training
-material itself (see the "Code" / "Training material" note at the end of
-each notebook).
+training material. This page credits who wrote the underlying code, and who provided the data,
+on which each case is based, separately from who prepared and maintains the
+training material itself.
 
-| Contributor | Code contribution |
+| Contributor | Contribution |
 |---|---|
-| Laura Mihai | Piccolo Doppio (FLMS/QEP) uncertainty propagation pipeline; cross-sensor intercomparison (E<sub>N</sub> agreement) code |
+| Laura Mihai | Piccolo Doppio (FLMS/QEP) uncertainty propagation pipeline; Altum & REMX (UAV) uncertainty budget and vegetation-index code; cross-sensor intercomparison (E<sub>N</sub> agreement) code |
 | Mike Werfeli | ASD & SVC uncertainty propagation; cross-sensor intercomparison (E<sub>N</sub> agreement) code |
-| Álvaro Sánchez-Virosta | Altum & REMX (UAV) processing pipeline |
+| Álvaro Sánchez-Virosta | Altum & REMX (UAV) data: plot-level reflectance and its uncertainty components |
+
+Training material (notebooks and documentation): L. Mihai (laura.mihai@inflpr.ro).
 
 Full author list for the underlying research: Werfeli, M.,
 Antala, M., Abdelmajeed, A.Y.A., Sánchez-Virosta, Á., Halem, Z., Merrington,
