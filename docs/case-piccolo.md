@@ -26,6 +26,9 @@ In this pipeline, that traceability chain has three links, each one relinking th
 
 Skipping any of these steps would mean trusting that nothing changed between one context and the next, exactly the kind of unquantified assumption this whole training module exists to avoid.
 
+> **Note:** If no field system is available to validate the calibration, the procedure is practically the same: the calibration
+> coefficients received from the laboratory that performed the calibration are used, together with their uncertainties.
+
 ## Outputs of the traceability chain
 
 Each of the three calibration steps outputs, per detector (FLMS and QEP) and per wavelength:
