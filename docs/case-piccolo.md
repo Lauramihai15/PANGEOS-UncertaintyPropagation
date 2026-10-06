@@ -16,9 +16,19 @@ This page focuses on what each stage produces and how uncertainty flows to the n
 
 ## Calibration chain
 
-A spectrometer's raw output is not a physical quantity; it is a digital number (DN) that depends on the specific detector, its exposure time, its temperature, and how much it has drifted since it was last checked against a known reference (a standard). Before anything scientifically meaningful (radiance, irradiance, reflectance) can be computed, the DNs have to be traced back to a physical unit through an unbroken chain of comparisons against reference standards. This is what traceability means.
+A spectrometer's raw output is not a physical quantity; it is a digital number (DN) that depends on the specific detector, its exposure time, its temperature, and how much it has drifted since it was last checked against a known reference (a standard). Before anything scientifically meaningful (radiance, irradiance, reflectance) can be computed, the DNs have to be traced back to a physical unit through an unbroken chain of comparisons against reference standards. This is what traceability means. Traceability is what allows the uncertainty of the final results (reflectance, vegetation indices) to be quantified, and measurements from different instruments, places and times to be compared on a common basis.
 
-For the Piccolo Doppio this traceability chain (laboratory calibration, laboratory validation against a transfer standard and field validation) was carried out completely. Its steps are not presented in this material: users generally receive from the laboratory that performed the calibration only the calibration coefficients and their uncertainties, and these are the input of the notebook. If no field system is available to validate the calibration, the procedure is practically the same: the calibration coefficients received from the laboratory are used, together with their uncertainties.
+The chain of the Piccolo Doppio follows the traceability diagram below (left side). Each level carries the uncertainty of the previous ones, split into a random (u_r) and a systematic (u_s) component:
+
+- **National standards (SI):** national primary standard of spectral irradiance (250-2500 nm) and national secondary standards of spectral irradiance and of spectral radiance (350-2500 nm).
+- **Laboratory reference standards:** spectral irradiance and radiance standards (350-2500 nm) with stated uncertainty (k = 2), traceable to the national standards (for the Piccolo Doppio, to NIST).
+- **Laboratory calibration (L1):** the radiance (L) and irradiance (E) sensors of the Piccolo Doppio (400-1000 nm) are calibrated against the laboratory reference standards, using a transfer-standard spectroradiometer (350-2500 nm). The non-linearity of the detectors and the cosine response of the irradiance optics are characterised. The field transfer standard ValGEOS (350-2500 nm) is calibrated in the laboratory as well.
+- **Field calibration:** the Piccolo Doppio is calibrated again with ValGEOS, under the conditions of the campaign. This assesses whether the laboratory calibration remains valid after transport and under the environmental conditions of the campaign, and accounts for changes associated with factors such as temperature, elapsed time or instrument handling.
+- **Field measurements (L0, raw):** radiance L and irradiance E measured at 5 points of each plot, with their random and systematic uncertainty.
+- **Reflectance (L2):** R = &pi; L / E, with u_r(R) and u_s(R).
+- **Vegetation indices (L3):** NDVI, EVI, OSAVI, MTCI and PRI, with u_r(VI) and u_s(VI).
+
+The laboratory and field calibration were carried out completely and their uncertainties are propagated into the calibration coefficients. These steps are not presented in this material: users generally receive from the laboratory that performed the calibration only the calibration coefficients and their uncertainties, and these are the input of the notebook. If no field system is available to validate the calibration, the procedure is practically the same: the calibration coefficients received from the laboratory are used, together with their uncertainties.
 
 ## Outputs of the traceability chain
 
