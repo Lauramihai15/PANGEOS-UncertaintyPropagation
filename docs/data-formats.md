@@ -58,12 +58,16 @@ wavelength), and `coeffsNonlin` contains the non-linearity correction polynomial
 
 ## ASD FieldSpec 4 and SVC HR-1024i (`CaseEx2_ASD-SVC_UncProp.ipynb`)
 
-Folder: `data/case-asd-svc-plot103/`
+Folder: `data/asd-svc/`
+
+Settings at the top of the notebook: `PLOT_ID` (the plot to process) and `PLOT_ORDER_ASD`, `PLOT_ORDER_SVC` (the order in which the plots were
+visited). The white-panel signal is interpolated in time between the plot and the plot visited after it, so the last plot of each list cannot be
+processed. Available plots: ASD 103, 105, 203, 304, 104, 403, 604; SVC 103, 105, 203, 304, 104.
 
 | File | Format |
 |---|---|
-| `raw_ASD_plot103_105.csv` | Raw ASD field-day export. One row per scan. Columns 0-21: instrument metadata (must include `Acquisition Time` and `File Name`; the latter identifies each row as a target scan (`plot_<id>_<position>_*`) or a white-reference scan (`plot_<id>_fsfwr_*` for panel WP1, `plot_<id>_laurawr_*` for panel WP2)). Columns 22 onwards: one column per wavelength (nm), 350-2500 nm, raw digital numbers. |
-| `raw_SVC_plot103_105.csv` | Raw SVC export with the same row types. The `File Name` is in column 8 and the wavelengths start at column 16. The wavelength grid is **not** uniformly spaced; the notebook interpolates it onto a uniform 1 nm grid, so you only need to provide the raw export as it is. |
+| `raw_ASD_all_plots.csv` | Raw ASD field-day export of all plots. One row per scan. Columns 0-21: instrument metadata (must include `Acquisition Time` and `File Name`; the latter identifies each row as a target scan (`plot_<id>_<position>_*`) or a white-reference scan (`plot_<id>_fsfwr_*` for panel WP1, `plot_<id>_laurawr_*` for panel WP2)). Columns 22 onwards: one column per wavelength (nm), 350-2500 nm, raw digital numbers. |
+| `raw_SVC_all_plots.csv` | Raw SVC export of all plots, with the same row types. The `File Name` is in column 8 and the wavelengths start at column 16. The wavelength grid is **not** uniformly spaced; the notebook interpolates it onto a uniform 1 nm grid, so you only need to provide the raw export as it is. |
 | `panel_certificate_WP1_AM.csv` | Columns: `lambda`, `rho` (panel reflectance factor per wavelength). |
 | `panel_uncertainty_WP1_AM.csv` | Columns: `lambda`, `sigma (k=2)` (panel calibration uncertainty, k=2, per wavelength). |
 | `panel_certificate_WP2_LM.csv`, `panel_uncertainty_WP2_LM.csv` | The same quantities for the second panel, in that panel's certificate format (integer + decimal columns; see the `rho_panel_interp` function in the notebook for the exact parsing). |
@@ -72,7 +76,7 @@ The same two panel certificates are used for the ASD and the SVC.
 
 ## Altum and REMX, and cross-sensor agreement (`CaseEx3_Altum-REMX_UncProp.ipynb`, `MeasAgreement_4Sensors.ipynb`)
 
-Folder: `data/case-intercomparison-plot103-full/`
+Folder: `data/campaign-workbook/`
 
 | File | Format |
 |---|---|

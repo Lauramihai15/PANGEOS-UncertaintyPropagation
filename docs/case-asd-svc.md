@@ -55,7 +55,7 @@ During the Norway 2025 campaign, the white panel was remeasured before and after
 TRY IT YOURSELF:
 
 [`CaseEx2_ASD-SVC_UncProp.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/CaseEx2_ASD-SVC_UncProp.ipynb)
-builds the uncertainty budget from the raw ASD FieldSpec 4 and SVC HR-1024i measurements of Plot 103.
+builds the uncertainty budget from the raw ASD FieldSpec 4 and SVC HR-1024i measurements. The plot is selected at the top of the notebook (`PLOT_ID`).
 
 ## From reflectance to vegetation indices
 
