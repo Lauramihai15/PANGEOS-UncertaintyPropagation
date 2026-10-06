@@ -55,7 +55,18 @@ During the Norway 2025 campaign, the white panel was remeasured before and after
 TRY IT YOURSELF:
 
 [`CaseEx2_ASD-SVC_UncProp.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/CaseEx2_ASD-SVC_UncProp.ipynb)
-builds the uncertainty budget from the raw ASD FieldSpec 4 and SVC HR-1024i measurements. The plot is selected at the top of the notebook (`PLOT_ID`).
+builds the uncertainty budget from the raw ASD FieldSpec 4 and SVC HR-1024i measurements. The plot is selected at the top of the notebook (`PLOT_ID`; ASD: 103, 105, 203, 304, 104, 403, 604; SVC: 103, 105, 203, 304, 104).
+
+Each instrument is processed in the following steps (the same for the ASD and the SVC):
+
+1. Read the raw data
+2. Panel calibration certificates
+3. Reflectance formula and time interpolation
+4. Reflectance of every target scan
+5. Random uncertainty (sensor noise)
+6. Systematic uncertainty (clouds and plot inhomogeneity)
+7. Combination with punpy
+8. Vegetation indices
 
 ## From reflectance to vegetation indices
 
@@ -71,7 +82,7 @@ Using the same vegetation-index formulas for all instruments makes the later cro
 
 TRY IT YOURSELF:
 
-The second part of [`CaseEx2_ASD-SVC_UncProp.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/CaseEx2_ASD-SVC_UncProp.ipynb)
+Step 8 of [`CaseEx2_ASD-SVC_UncProp.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/CaseEx2_ASD-SVC_UncProp.ipynb)
 calculates all five vegetation indices from the reflectance spectrum of the selected plot (Plot 103 by default) and propagates their uncertainties using `punpy`.
 
 ## Going further

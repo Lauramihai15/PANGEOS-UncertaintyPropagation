@@ -86,6 +86,15 @@ TRY IT YOURSELF:
 uses real results (Plot 103 by default; the plot is selected with `PLOT_ID`) to compare the grey-panel and white-panel methods directly and
 combines the three uncertainty components into the combined uncertainty.
 
+The notebook is organised in the following steps:
+
+1. Load the data
+2. Grey panel (GP) versus white panel (WP)
+3. Combined uncertainty from its components
+4. Relative uncertainty and dominant component
+5. Vegetation indices from the reflectance
+6. Vegetation indices and their uncertainty (from the workbook)
+
 ## Vegetation indices
 
 The same index formulas are applied as elsewhere (NDVI, OSAVI always;
@@ -107,8 +116,9 @@ in quadrature (Eq. 5 of the paper).
 
 TRY IT YOURSELF:
 
-The second part of [`CaseEx3_Altum-REMX_UncProp.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/CaseEx3_Altum-REMX_UncProp.ipynb)
-computes NDVI/OSAVI/EVI (and PRI for REMX) from the real reflectance of the selected plot.
+Steps 5 and 6 of [`CaseEx3_Altum-REMX_UncProp.ipynb`](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/CaseEx3_Altum-REMX_UncProp.ipynb)
+compute NDVI/OSAVI/EVI (and PRI for REMX) from the real reflectance of the selected plot (Step 5) and read the vegetation indices
+with their combined uncertainty from the campaign workbook (Step 6).
 
 ## Going further
 

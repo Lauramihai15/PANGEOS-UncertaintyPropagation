@@ -89,9 +89,19 @@ TRY IT YOURSELF:
 starts from the field calibration coefficients (with their propagated random and systematic uncertainties), applies them to the raw field measurements to obtain the radiance and irradiance, and continues with the reflectance, the plot mean and the five vegetation indices, using real data (Plot 103 by default).
 The detector (FLMS or QEP) and the plot are selected at the top of the notebook.
 
+The notebook is organised in the following steps:
+
+1. Import the Python packages and set the parameters (detector, plot, folders)
+2. Measurement functions
+3. Load and plot the calibration coefficients
+4. Field measurements, per point: conversion from DN to radiance and irradiance (SI units), and reflectance
+5. Plot-level mean over the points
+6. Vegetation indices, per point
+
 ## Vegetation indices
 At each point, **NDVI, EVI, OSAVI, MTCI, and PRI**, all five indices from the paper's Table 3, are computed with uncertainty propagated using a correlation matrix sized to the number of
 reflectance bands each index depends on (2 bands or 3 bands), reflecting that those bands share correlated systematic errors from the same calibration chain.
+The QEP detector covers only about 640-805 nm, so for it only the indices whose bands lie within this range (NDVI, OSAVI and MTCI) are calculated; the FLMS detector gives all five.
 
 ## Running for other plots and detectors
 The notebook processes one plot and one detector at a time. The plot (`PLOT_ID`) and the detector (`SENSOR`, FLMS or QEP) are selected at the top of the notebook; the same code runs for all 12 plots and for both detectors.

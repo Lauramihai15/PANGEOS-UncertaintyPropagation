@@ -79,7 +79,7 @@ value, u_r, u_s, u_homogeneity, u_c, U_k2) in a fixed order: PRI, NDVI,
 NIRv, EVI, MTCI, OSAVI. Not every sensor has every index (e.g. Altum has no PRI
 or MTCI, and REMX has no MTCI); those cells are empty.
 
-The plot is selected with the variable `PLOT_ID` at the top of the notebooks. To use your own campaign data, either reproduce this exact sheet and column
+The plot is selected with the variable `PLOT_ID` at the top of the notebooks. The Altum and REMX blocks exist for all plots; the ASD and SVC blocks only for plots 103, 105 and 203, and the plot-mean index rows of FLMS and QEP only for those plots too. Sensors without data for the selected plot are skipped by `MeasAgreement_4Sensors.ipynb`. To use your own campaign data, either reproduce this exact sheet and column
 layout, or edit the `sensors`, `row_map` and `index_start` dictionaries in the
 notebooks to match your own workbook.
 

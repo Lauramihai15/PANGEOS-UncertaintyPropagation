@@ -40,6 +40,18 @@ panel itself carries its own calibration uncertainty and is part of what
 could cause two instruments to disagree.
 [Try it yourself](https://github.com/Lauramihai15/PANGEOS-UncertaintyPropagation/blob/main/notebooks/MeasAgreement_4Sensors.ipynb)
 with real data (Plot 103 by default; the plot is selected with `PLOT_ID`): the notebook covers both the reflectance and the vegetation indices.
+It reads the reflectance and the vegetation indices of each sensor, with their combined uncertainty, from the campaign workbook (the results of the three cases above).
+ASD and SVC exist only for plots 103, 105 and 203; sensors without data for the selected plot are skipped.
+
+The notebook is organised in the following steps:
+
+1. Read the reflectance data of all sensors
+2. Plot the reflectance of all sensors
+3. Match the wavelengths of two sensors
+4. E<sub>N</sub> agreement of the reflectance, FLMS against every other sensor
+5. E<sub>N</sub> agreement of the vegetation indices
+6. Summary table
+7. Plot of the index agreement
 
 ## Why does each sensor still need its own uncertainty budget first?
 
@@ -54,6 +66,8 @@ missing a real source of error, its E<sub>N</sub> values will look better than
 they should, not worse; this is an easy way to be fooled into false agreement.
 
 $$E_N = \frac{|x_1 - x_2|}{k\sqrt{u(x_1)^2 + u(x_2)^2}}$$
+
+In the notebook the signed value, E<sub>N</sub> = (x<sub>1</sub> − x<sub>2</sub>) / √(u(x<sub>1</sub>)² + u(x<sub>2</sub>)²) with k = 1 and x<sub>1</sub> = Piccolo FLMS, is used, so that the sign shows which sensor gives the larger value (positive: FLMS larger).
 
 - E<sub>N</sub> ≤ 1 (at k=1, ~68% confidence, or k=2, ~95%) → the disagreement
   is fully explained by the two sensors' own uncertainty.
