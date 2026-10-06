@@ -29,8 +29,8 @@ The detector `<det>` is `FLMS` or `QEP`.
 
 ### Calibration coefficients: `data/piccolo-coefficients/`
 
-The field calibration coefficients (the result of the last calibration step) with their propagated uncertainties, and the
-detector non-linearity coefficients, per detector:
+The calibration coefficients with their propagated random and systematic uncertainties, as received from the laboratory that performed
+the calibration (or obtained in the last step of the calibration chain), and the detector non-linearity coefficients, per detector:
 
 | File | Content |
 |---|---|

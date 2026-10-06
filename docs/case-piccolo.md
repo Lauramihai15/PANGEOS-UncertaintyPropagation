@@ -18,21 +18,15 @@ This page focuses on what each stage produces and how uncertainty flows to the n
 
 A spectrometer's raw output is not a physical quantity; it is a digital number (DN) that depends on the specific detector, its exposure time, its temperature, and how much it has drifted since it was last checked against a known reference (a standard). Before anything scientifically meaningful (radiance, irradiance, reflectance) can be computed, the DNs have to be traced back to a physical unit through an unbroken chain of comparisons against reference standards. This is what traceability means.
 
-In this pipeline, that traceability chain has three stages, each one relinking the calibration closer to the actual conditions in which the measurement was performed:
-
-1. **Laboratory calibration** — the detector's raw response is related to a radiance/irradiance standard under controlled laboratory conditions.
-2. **Laboratory validation against a transfer standard (ValGEOS)** — the laboratory calibration is checked against an independent, NIST-traceable transfer standard, confirming that it is trustworthy before it leaves the lab.
-3. **Field calibration** — the validated calibration is relinked using a field validation measurement, to account for whatever has changed (temperature, transport, time elapsed) between the lab and the actual field campaign. 
-
-Skipping any of these stages would mean trusting that nothing changed between one context and the next, exactly the kind of unquantified assumption this whole training module exists to avoid.
+For the Piccolo Doppio this traceability chain (laboratory calibration, laboratory validation against a transfer standard and field validation) was carried out completely. Its steps are not presented in this material: users generally receive from the laboratory that performed the calibration only the calibration coefficients and their uncertainties, and these are the input of the notebook. If no field system is available to validate the calibration, the procedure is practically the same: the calibration coefficients received from the laboratory are used, together with their uncertainties.
 
 ## Outputs of the traceability chain
 
-Each of the three calibration stages outputs, per detector (FLMS and QEP) and per wavelength:
-- a **calibrated value** (a calibration coefficient, or a validated radiance/irradiance), and
+The calibration chain provides, per detector (FLMS and QEP) and per wavelength:
+- a **calibrated value** (the calibration coefficient), and
 - its **uncertainty, already split into a random component and a systematic component**, not a single combined number. The uncertainties from each previous step are propagated to the next one, so that at the end we obtain the required results with the total propagated uncertainty for the entire chain.
 
-That split matters downstream: a random component shrinks when you average repeated measurements; a systematic (common) one does not. By the time the field calibration step hands off its result, every
+That split matters downstream: a random component shrinks when you average repeated measurements; a systematic (common) one does not. By the time the calibration coefficients are handed over, every
 downstream calculation treats it as: *a value, a random uncertainty, and a systematic uncertainty*, three numbers (per wavelength) in, three numbers out, at every subsequent step.
 
 How the uncertainty is propagated along the full pipeline can be seen in the diagram, on the left side:
